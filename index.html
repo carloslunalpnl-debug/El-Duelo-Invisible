@@ -1,0 +1,3077 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>El Duelo Invisible — Kit Digital Carlos Luna PNL</title>
+    <meta
+      name="description"
+      content="Kit digital interactivo de escritura terapéutica, inventario del alma y botiquín de emergencia somática basado en el e-book El Duelo Invisible de Carlos Luna PNL."
+    />
+    <meta property="og:title" content="El Duelo Invisible — Kit Digital Carlos Luna PNL" />
+    <meta
+      property="og:description"
+      content="Acompañamiento emocional interactivo para transitar el peso de fin de año, liberar expectativas ajenas y regular tu sistema nervioso."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://i.postimg.cc/m23yZ6Pc/Gemini-Generated-Image-l1plj9l1plj9l1pl.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="El Duelo Invisible — Kit Digital Carlos Luna PNL" />
+    <meta
+      name="twitter:description"
+      content="Kit digital interactivo basado en el e-book El Duelo Invisible de Carlos Luna PNL."
+    />
+    <meta
+      name="twitter:image"
+      content="https://i.postimg.cc/m23yZ6Pc/Gemini-Generated-Image-l1plj9l1plj9l1pl.jpg"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+              body: ['"DM Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      :root {
+        --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+        --font-body: "DM Sans", system-ui, -apple-system, sans-serif;
+      }
+
+      html {
+        font-family: var(--font-body);
+        color: #FAF7F0;
+        background-color: #153226;
+        scroll-behavior: smooth;
+      }
+
+      h1, h2, h3, h4, .font-display {
+        font-family: var(--font-display);
+      }
+
+      h1, h2, h3 {
+        text-wrap: balance;
+      }
+
+      .tabular-nums {
+        font-variant-numeric: tabular-nums;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      @media print {
+        header,
+        nav,
+        .no-print {
+          display: none !important;
+        }
+
+        html,
+        body {
+          background: #FFFFFF !important;
+          color: #14281D !important;
+        }
+
+        main {
+          padding: 0 !important;
+          margin: 0 !important;
+          max-width: 100% !important;
+        }
+
+        .print-card {
+          box-shadow: none !important;
+          border: 1px solid #D8CEBE !important;
+          break-inside: avoid;
+        }
+      }
+    </style>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="bg-[#153226] text-[#FAF7F0] antialiased selection:bg-[#9B2226]/30 selection:text-[#FAF7F0]">
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useCallback, useEffect, useRef, useState } = React;
+
+      /* =====================================================================
+       * ICONOS SVG INTEGRADOS (SIN DEPENDENCIAS EXTERNAS FRÁGILES)
+       * ===================================================================== */
+      function SvgIcon({ children, className = 'w-4 h-4', ...rest }) {
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={className}
+            aria-hidden="true"
+            {...rest}
+          >
+            {children}
+          </svg>
+        );
+      }
+
+      const IconArrowRight = (props) => (
+        <SvgIcon {...props}>
+          <path d="M5 12h14" />
+          <path d="m12 5 7 7-7 7" />
+        </SvgIcon>
+      );
+
+      const IconBookOpen = (props) => (
+        <SvgIcon {...props}>
+          <path d="M12 7v14" />
+          <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+        </SvgIcon>
+      );
+
+      const IconHeartHandshake = (props) => (
+        <SvgIcon {...props}>
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+          <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
+          <path d="m18 15-2-2" />
+          <path d="m15 18-2-2" />
+        </SvgIcon>
+      );
+
+      const IconWind = (props) => (
+        <SvgIcon {...props}>
+          <path d="M12.8 19.6A2 2 0 1 0 14 16H2" />
+          <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2" />
+          <path d="M9.8 4.4A2 2 0 1 1 11 8H2" />
+        </SvgIcon>
+      );
+
+      const IconSparkles = (props) => (
+        <SvgIcon {...props}>
+          <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+        </SvgIcon>
+      );
+
+      const IconCheckCircle = (props) => (
+        <SvgIcon {...props}>
+          <circle cx="12" cy="12" r="10" />
+          <path d="m9 12 2 2 4-4" />
+        </SvgIcon>
+      );
+
+      const IconChevronDown = (props) => (
+        <SvgIcon {...props}>
+          <path d="m6 9 6 6 6-6" />
+        </SvgIcon>
+      );
+
+      const IconChevronUp = (props) => (
+        <SvgIcon {...props}>
+          <path d="m18 15-6-6-6 6" />
+        </SvgIcon>
+      );
+
+      const IconChevronLeft = (props) => (
+        <SvgIcon {...props}>
+          <path d="m15 18-6-6 6-6" />
+        </SvgIcon>
+      );
+
+      const IconChevronRight = (props) => (
+        <SvgIcon {...props}>
+          <path d="m9 18 6-6-6-6" />
+        </SvgIcon>
+      );
+
+      const IconFileText = (props) => (
+        <SvgIcon {...props}>
+          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+          <path d="M10 9H8" />
+          <path d="M16 13H8" />
+          <path d="M16 17H8" />
+        </SvgIcon>
+      );
+
+      const IconPenLine = (props) => (
+        <SvgIcon {...props}>
+          <path d="M12 20h9" />
+          <path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z" />
+        </SvgIcon>
+      );
+
+      const IconHandHeart = (props) => (
+        <SvgIcon {...props}>
+          <path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16" />
+          <path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+          <path d="m2 15 6 6" />
+          <path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z" />
+        </SvgIcon>
+      );
+
+      const IconActivity = (props) => (
+        <SvgIcon {...props}>
+          <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+        </SvgIcon>
+      );
+
+      const IconPlay = (props) => (
+        <SvgIcon {...props}>
+          <polygon points="6 3 20 12 6 21 6 3" />
+        </SvgIcon>
+      );
+
+      const IconPause = (props) => (
+        <SvgIcon {...props}>
+          <rect x="14" y="4" width="4" height="16" rx="1" />
+          <rect x="6" y="4" width="4" height="16" rx="1" />
+        </SvgIcon>
+      );
+
+      const IconRotateCcw = (props) => (
+        <SvgIcon {...props}>
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+          <path d="M3 3v5h5" />
+        </SvgIcon>
+      );
+
+      const IconVolume2 = (props) => (
+        <SvgIcon {...props}>
+          <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+          <path d="M16 9a5 5 0 0 1 0 6" />
+          <path d="M19.364 18.364a9 9 0 0 0 0-12.728" />
+        </SvgIcon>
+      );
+
+      const IconVolumeX = (props) => (
+        <SvgIcon {...props}>
+          <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+          <line x1="22" x2="16" y1="9" y2="15" />
+          <line x1="16" x2="22" y1="9" y2="15" />
+        </SvgIcon>
+      );
+
+      const IconCheck = (props) => (
+        <SvgIcon {...props}>
+          <path d="M20 6 9 17l-5-5" />
+        </SvgIcon>
+      );
+
+      const IconCopy = (props) => (
+        <SvgIcon {...props}>
+          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+        </SvgIcon>
+      );
+
+      const IconDownload = (props) => (
+        <SvgIcon {...props}>
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+          <polyline points="7 10 12 15 17 10" />
+          <line x1="12" x2="12" y1="15" y2="3" />
+        </SvgIcon>
+      );
+
+      const IconPrinter = (props) => (
+        <SvgIcon {...props}>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+          <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" />
+          <rect x="6" y="14" width="12" height="8" rx="1" />
+        </SvgIcon>
+      );
+
+      const IconEdit = (props) => (
+        <SvgIcon {...props}>
+          <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+          <path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z" />
+        </SvgIcon>
+      );
+
+      /* =====================================================================
+       * MOTOR DE ANÁLISIS EMOCIONAL PNL Y FORMATEO DE REPORTE
+       * ===================================================================== */
+      function countWords(text) {
+        const trimmed = (text || '').trim();
+        if (!trimmed) {
+          return 0;
+        }
+        return trimmed.split(/\s+/).length;
+      }
+
+      function normalizeSpanish(text) {
+        return text
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '');
+      }
+
+      function extractExcerpt(text, fallback) {
+        const cleaned = (text || '').trim().replace(/\s+/g, ' ');
+        if (!cleaned) {
+          return fallback;
+        }
+        if (cleaned.length <= 150) {
+          return cleaned;
+        }
+        const sliced = cleaned.slice(0, 147);
+        const lastSpace = sliced.lastIndexOf(' ');
+        const cut = lastSpace > 80 ? sliced.slice(0, lastSpace) : sliced;
+        return `${cut}…`;
+      }
+
+      const THEME_RULES = [
+        {
+          id: 'exhaustion',
+          label: 'Cansancio acumulado y necesidad de tregua',
+          keywords: [
+            'cansad',
+            'agotad',
+            'sueno',
+            'dormir',
+            'descans',
+            'peso',
+            'carga',
+            'fuerza',
+            'energia',
+            'lento',
+            'pausa',
+            'burnout',
+            'estres',
+            'rendir',
+            'sostener',
+          ],
+          reflection:
+            'Tu relato reconoce una fatiga real que no pide más exigencia, sino permiso para bajar la guardia y habitar la pausa sin culpa.',
+          protocol: 'respiracion',
+        },
+        {
+          id: 'boundaries',
+          label: 'Límites sanos y liberación de mandatos',
+          keywords: [
+            'expectativa',
+            'demas',
+            'familia',
+            'culpa',
+            'perfeccion',
+            'cumplir',
+            'deber',
+            'tengo que',
+            'agrad',
+            'decir no',
+            'limite',
+            'ajeno',
+            'compar',
+            'reloj',
+            'calendario',
+          ],
+          reflection:
+            'Soltar lo que otros esperaban de ti abre espacio vital. En PNL, dejar ir un mandato ajeno devuelve energía inmediata al presente.',
+          protocol: 'corte',
+        },
+        {
+          id: 'grief',
+          label: 'Tránsito emocional y duelos silenciosos',
+          keywords: [
+            'duelo',
+            'perdida',
+            'cambio',
+            'dolor',
+            'triste',
+            'llor',
+            'soledad',
+            'soltar',
+            'cerrar',
+            'etapa',
+            'ausencia',
+            'nostalgia',
+            'miedo',
+            'incertidumbre',
+            'herida',
+          ],
+          reflection:
+            'Lo que dolió en silencio merecía ser nombrado. Nombrar un duelo invisible lo transforma de carga difusa en experiencia integrada.',
+          protocol: 'ancla',
+        },
+        {
+          id: 'resilience',
+          label: 'Supervivencia cotidiana y dignidad silenciosa',
+          keywords: [
+            'segu',
+            'levant',
+            'dia a dia',
+            'continu',
+            'sobreviv',
+            'calma',
+            'paciencia',
+            'valentia',
+            'caminar',
+            'logr',
+            'pude',
+            'sostuve',
+            'aprend',
+            'crec',
+            'paz',
+          ],
+          reflection:
+            'No hubo aplausos externos, pero sí una coherencia interna enorme: seguiste presente incluso cuando nadie veía el esfuerzo.',
+          protocol: 'ancla',
+        },
+      ];
+
+      function analyzeSoulInventory(inventory) {
+        const resilienceWords = countWords(inventory.resilience);
+        const releaseWords = countWords(inventory.releasedExpectations);
+        const victoryWords = countWords(inventory.secretVictory);
+        const totalWords = resilienceWords + releaseWords + victoryWords;
+
+        const completedPillars = [resilienceWords, releaseWords, victoryWords].filter(
+          (count) => count > 0
+        ).length;
+
+        const combinedNormalized = normalizeSpanish(
+          `${inventory.resilience} ${inventory.releasedExpectations} ${inventory.secretVictory}`
+        );
+
+        const matchedThemes = [];
+        const protocolScores = {
+          respiracion: 0,
+          ancla: 0,
+          corte: 0,
+        };
+
+        for (const rule of THEME_RULES) {
+          let hits = 0;
+          for (const keyword of rule.keywords) {
+            if (combinedNormalized.includes(keyword)) {
+              hits += 1;
+            }
+          }
+          if (hits > 0) {
+            matchedThemes.push({
+              id: rule.id,
+              label: rule.label,
+              reflection: rule.reflection,
+            });
+            protocolScores[rule.protocol] += hits;
+          }
+        }
+
+        if (matchedThemes.length === 0) {
+          matchedThemes.push({
+            id: 'presence',
+            label: 'Presencia honesta ante el cierre de ciclo',
+            reflection:
+              'Poner tus vivencias por escrito interrumpe el piloto automático de fin de año y te devuelve un lugar seguro desde donde mirarte con compasión.',
+          });
+        }
+
+        let recommendedProtocol = 'respiracion';
+        if (
+          protocolScores.corte > protocolScores.respiracion &&
+          protocolScores.corte >= protocolScores.ancla
+        ) {
+          recommendedProtocol = 'corte';
+        } else if (
+          protocolScores.ancla > protocolScores.respiracion &&
+          protocolScores.ancla > protocolScores.corte
+        ) {
+          recommendedProtocol = 'ancla';
+        }
+
+        const protocolReasons = {
+          respiracion:
+            'La Respiración Cuadrada 4-4-4-4 ayudará a tu sistema nervioso a salir del estado de alerta sostenida y validar el descanso.',
+          ancla:
+            'El Ancla Somática de Autocontención te permitirá darle sostén físico a las emociones nombradas sin sentir que desbordan tu cuerpo.',
+          corte:
+            'El Corte Kinestésico de Frecuencia reforzará en tu fisiología la decisión de soltar expectativas y cargas que ya no te pertenecen.',
+        };
+
+        let headline = 'Has dado forma visible a lo que sostenías en silencio.';
+        if (completedPillars === 3 && totalWords >= 45) {
+          headline =
+            'Un inventario lúcido: reconoces tu peso, sueltas lo ajeno y honras tu verdad.';
+        } else if (releaseWords > resilienceWords && releaseWords > victoryWords) {
+          headline = 'Tu centro de gravedad hoy pide ligereza y desapego consciente.';
+        } else if (victoryWords >= 12) {
+          headline = 'Tu victoria íntima confirma que creciste incluso en terreno difícil.';
+        }
+
+        const reframeMessage =
+          completedPillars === 3
+            ? 'Desde la Programación Neurolingüística, cuando integras lo que sobreviviste, lo que sueltas y lo que lograste en silencio, dejas de pelearte con el calendario. Este cierre no exige euforia: pide verdad, descanso y respeto por tu propio ritmo.'
+            : 'Incluso en los trazos breves hay verdad emocional. Puedes volver a ampliar cualquiera de los tres pilares cuando lo necesites; cada palabra escrita ya es un acto de autocuidado.';
+
+        const affirmation =
+          releaseWords > 0
+            ? 'No le debo al calendario una versión agotada de mí; honro lo que sostuve y elijo avanzar más liviana.'
+            : 'Lo que atravesé sin testigos también cuenta; hoy me reconozco, me contengo y suelto la prisa.';
+
+        return {
+          analyzedAt: new Date().toISOString(),
+          totalWords,
+          completedPillars,
+          headline,
+          reframeMessage,
+          recommendedProtocol,
+          recommendedReason: protocolReasons[recommendedProtocol],
+          themes: matchedThemes.slice(0, 3),
+          resilienceExcerpt: extractExcerpt(
+            inventory.resilience,
+            'Aún pendiente de registrar tu resiliencia cotidiana.'
+          ),
+          releaseExcerpt: extractExcerpt(
+            inventory.releasedExpectations,
+            'Aún pendiente de nombrar las expectativas que deseas soltar.'
+          ),
+          victoryExcerpt: extractExcerpt(
+            inventory.secretVictory,
+            'Aún pendiente de celebrar tu victoria secreta del año.'
+          ),
+          affirmation,
+        };
+      }
+
+      function formatSpanishDate(isoString) {
+        try {
+          const date = new Date(isoString);
+          return new Intl.DateTimeFormat('es-ES', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+          }).format(date);
+        } catch {
+          return isoString;
+        }
+      }
+
+      function protocolLabel(protocol) {
+        switch (protocol) {
+          case 'respiracion':
+            return 'Respiración Cuadrada (4-4-4-4)';
+          case 'ancla':
+            return 'Ancla Somática de Autocontención';
+          case 'corte':
+            return 'Corte Kinestésico de Frecuencia';
+          default:
+            return 'Respiración Cuadrada (4-4-4-4)';
+        }
+      }
+
+      function buildPlainTextReport(state) {
+        const lines = [];
+        const generatedDate = formatSpanishDate(new Date().toISOString());
+
+        lines.push('====================================================================');
+        lines.push('EL DUELO INVISIBLE — KIT DIGITAL CARLOS LUNA PNL');
+        lines.push('Reporte Personal de Auditoría Emocional y Regulación Somática');
+        lines.push('====================================================================');
+        lines.push(`Fecha de emisión: ${generatedDate}`);
+        lines.push(`Inicio de sesión: ${formatSpanishDate(state.startedAt)}`);
+        lines.push('');
+        lines.push('--------------------------------------------------------------------');
+        lines.push('1. INVENTARIO DEL ALMA (ESCRITURA TERAPÉUTICA)');
+        lines.push('--------------------------------------------------------------------');
+        lines.push('');
+        lines.push('A) Resiliencia invisible y supervivencia cotidiana:');
+        lines.push(
+          state.inventory.resilience.trim() || '(Sin respuesta registrada en esta sección)'
+        );
+        lines.push('');
+        lines.push('B) Expectativas ajenas de las que me despojo:');
+        lines.push(
+          state.inventory.releasedExpectations.trim() ||
+            '(Sin respuesta registrada en esta sección)'
+        );
+        lines.push('');
+        lines.push('C) Mi victoria secreta del año:');
+        lines.push(
+          state.inventory.secretVictory.trim() || '(Sin respuesta registrada en esta sección)'
+        );
+        lines.push('');
+
+        if (state.analysis) {
+          lines.push('--------------------------------------------------------------------');
+          lines.push('2. SÍNTESIS Y REENCUADRE PNL');
+          lines.push('--------------------------------------------------------------------');
+          lines.push(`Titular de síntesis: ${state.analysis.headline}`);
+          lines.push(
+            `Palabras escritas: ${state.analysis.totalWords} | Pilares completados: ${state.analysis.completedPillars}/3`
+          );
+          lines.push('');
+          lines.push(`Reencuadre: ${state.analysis.reframeMessage}`);
+          lines.push('');
+          lines.push('Ejes detectados en tu escritura:');
+          for (const theme of state.analysis.themes) {
+            lines.push(`- ${theme.label}: ${theme.reflection}`);
+          }
+          lines.push('');
+          lines.push(`Afirmación ancla: "${state.analysis.affirmation}"`);
+          lines.push('');
+        }
+
+        lines.push('--------------------------------------------------------------------');
+        lines.push('3. BOTIQUÍN DE EMERGENCIA SOMÁTICA');
+        lines.push('--------------------------------------------------------------------');
+        lines.push(
+          `- Ciclos de Respiración Cuadrada completados: ${state.somatic.boxBreathingCycles}`
+        );
+        lines.push(
+          `- Prácticas de Ancla Somática de Autocontención: ${state.somatic.anchorCompletedCount}`
+        );
+        lines.push(
+          `- Prácticas de Corte Kinestésico de Frecuencia: ${state.somatic.frequencyCutCompletedCount}`
+        );
+        if (state.somatic.lastPracticedProtocol) {
+          lines.push(
+            `- Último protocolo practicado: ${protocolLabel(state.somatic.lastPracticedProtocol)}`
+          );
+        }
+        lines.push('');
+
+        lines.push('--------------------------------------------------------------------');
+        lines.push('4. INTENCIÓN DE CIERRE PARA ESTE FIN DE AÑO');
+        lines.push('--------------------------------------------------------------------');
+        lines.push(
+          state.closingIntention.trim() ||
+            'Transitar el cierre de año con amabilidad hacia mi ritmo, sin pelear con el calendario.'
+        );
+        lines.push('');
+        lines.push('====================================================================');
+        lines.push('Basado en el e-book "El Duelo Invisible" de Carlos Luna PNL.');
+        lines.push('Documento personal y confidencial.');
+        lines.push('====================================================================');
+
+        return lines.join('\n');
+      }
+
+      /* =====================================================================
+       * AUDIO WEB API: CAMPANA ARMÓNICA DE MAYOR VOLUMEN Y CLARIDAD
+       * ===================================================================== */
+      let sharedAudioCtx = null;
+
+      function getSharedAudioContext() {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) {
+          return null;
+        }
+        if (!sharedAudioCtx || sharedAudioCtx.state === 'closed') {
+          sharedAudioCtx = new AudioCtx();
+        }
+        if (sharedAudioCtx.state === 'suspended') {
+          sharedAudioCtx.resume().catch(() => {});
+        }
+        return sharedAudioCtx;
+      }
+
+      function playBellChime(mode = 'phase') {
+        try {
+          const ctx = getSharedAudioContext();
+          if (!ctx) {
+            return;
+          }
+
+          const now = ctx.currentTime;
+          const compressor = ctx.createDynamicsCompressor();
+          compressor.threshold.setValueAtTime(-12, now);
+          compressor.knee.setValueAtTime(18, now);
+          compressor.ratio.setValueAtTime(4, now);
+          compressor.attack.setValueAtTime(0.005, now);
+          compressor.release.setValueAtTime(0.25, now);
+
+          const masterGain = ctx.createGain();
+          masterGain.gain.setValueAtTime(0.95, now);
+
+          compressor.connect(masterGain);
+          masterGain.connect(ctx.destination);
+
+          const triggerNote = (baseFreq, startOffset, durationSec, peakLevel) => {
+            const t0 = now + startOffset;
+            const partials = [
+              { freq: baseFreq, ratio: 1.0, type: 'sine', decay: durationSec },
+              { freq: baseFreq * 2, ratio: 0.42, type: 'sine', decay: durationSec * 0.72 },
+              { freq: baseFreq * 3, ratio: 0.16, type: 'triangle', decay: durationSec * 0.48 },
+            ];
+
+            for (const partial of partials) {
+              const osc = ctx.createOscillator();
+              const env = ctx.createGain();
+              osc.type = partial.type;
+              osc.frequency.setValueAtTime(partial.freq, t0);
+
+              env.gain.setValueAtTime(0.0001, t0);
+              env.gain.linearRampToValueAtTime(peakLevel * partial.ratio, t0 + 0.018);
+              env.gain.exponentialRampToValueAtTime(0.0001, t0 + partial.decay);
+
+              osc.connect(env);
+              env.connect(compressor);
+              osc.start(t0);
+              osc.stop(t0 + partial.decay + 0.05);
+            }
+          };
+
+          if (mode === 'complete') {
+            triggerNote(528, 0, 1.35, 0.55);
+            triggerNote(660, 0.22, 1.55, 0.50);
+          } else {
+            triggerNote(528, 0, 1.25, 0.60);
+          }
+        } catch {
+          // Ignorar restricciones de reproducción si el navegador las bloquea
+        }
+      }
+
+      /* =====================================================================
+       * PANTALLA 1: BIENVENIDA E INTRODUCCIÓN EXPANDIDA
+       * ===================================================================== */
+      const HERO_IMAGE_SRC = '/src/assets/images/duelo_invisible_hero_1794865152517.jpg';
+
+      function WelcomeScreen({ onStartAudit, onNavigate, hasExistingProgress }) {
+        const [imageError, setImageError] = useState(false);
+
+        return (
+          <div className="space-y-12 md:space-y-16">
+            <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+              <div className="lg:col-span-7 flex flex-col justify-between bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 lg:p-10">
+                <div className="space-y-6">
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-[#4F685B]">
+                    <span className="text-[#9B2226] font-semibold">Kit Digital Interactivo</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Basado en el e-book de Carlos Luna PNL</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Sesión de 15 a 20 min</span>
+                  </div>
+
+                  <h1 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-[#14281D] leading-[1.14]">
+                    El Duelo Invisible: un refugio para soltar el peso emocional de fin de año
+                  </h1>
+
+                  <p className="text-base sm:text-[17px] text-[#2D4539] leading-relaxed max-w-2xl">
+                    Cuando diciembre se acerca, el mundo parece exigir balance perfecto, gratitud
+                    automática y entusiasmo obligado. Pero por dentro muchas veces habita otro
+                    paisaje: un cansancio silencioso por las batallas que nadie vio y por los duelos
+                    que no tuvieron despedida formal.
+                  </p>
+
+                  <p className="text-[15px] text-[#455E51] leading-relaxed max-w-2xl">
+                    Este espacio no busca presionarte para que te reinventes antes de medianoche.
+                    Es una pausa guiada con herramientas de Programación Neurolingüística y
+                    regulación somática para nombrar tu verdad, liberar expectativas prestadas y
+                    devolverle calma a tu cuerpo.
+                  </p>
+                </div>
+
+                <div className="pt-8 mt-8 border-t border-[#E6DFD2] flex flex-col sm:flex-row sm:items-center gap-3.5">
+                  <button
+                    type="button"
+                    onClick={onStartAudit}
+                    className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-6 py-3 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] active:scale-[0.99] text-white font-semibold text-sm sm:text-base shadow-sm transition-all cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226] focus-visible:ring-offset-2"
+                  >
+                    <span>{hasExistingProgress ? 'Continuar Auditoría' : 'Comenzar Auditoría'}</span>
+                    <IconArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('botiquin')}
+                    className="inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-xl bg-[#F3F6F3] hover:bg-[#E7EEE9] text-[#14281D] font-medium text-sm border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B4332] focus-visible:ring-offset-2"
+                  >
+                    <IconWind className="w-4 h-4 text-[#9B2226]" />
+                    <span>Ir directo al Botiquín Somático</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-[#D4A348]/45 shadow-lg shadow-black/15 bg-[#1B3B2B] min-h-[300px] lg:min-h-full">
+                {!imageError ? (
+                  <img
+                    src={HERO_IMAGE_SRC}
+                    alt="Cuaderno de lino, taza tibia y luz de tarde sobre escritorio de madera"
+                    referrerPolicy="no-referrer"
+                    onError={() => setImageError(true)}
+                    className="w-full h-full object-cover lg:absolute lg:inset-0"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center bg-gradient-to-br from-[#1B4332] via-[#153226] to-[#9B2226]/40">
+                    <IconBookOpen className="w-10 h-10 text-[#F2C97D] mb-3" />
+                    <p className="font-display font-semibold text-[#FAF7F0] text-lg">
+                      El Duelo Invisible
+                    </p>
+                    <p className="text-sm text-[#C7D6CE] mt-1">
+                      Kit Digital de Acompañamiento · Carlos Luna PNL
+                    </p>
+                  </div>
+                )}
+
+                <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#0D2118]/92 via-[#0D2118]/60 to-transparent">
+                  <p className="text-xs font-semibold text-[#F2C97D]">
+                    Premisa central del método
+                  </p>
+                  <p className="text-sm sm:text-[15px] text-[#FAF7F0] font-medium leading-snug mt-1">
+                    “Sanar el cierre de año no consiste en correr más rápido, sino en honrar lo que
+                    tu alma sostuvo sin testigos.”
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section aria-labelledby="pillars-heading" className="space-y-6">
+              <div className="max-w-2xl space-y-2">
+                <p className="text-xs font-semibold text-[#F2C97D]">
+                  01. Marco emocional y PNL
+                </p>
+                <h2
+                  id="pillars-heading"
+                  className="text-2xl sm:text-3xl font-bold text-[#FAF7F0] tracking-tight"
+                >
+                  Comprender lo que sientes antes de exigirte cambios
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/40 shadow-lg shadow-black/15 p-6 sm:p-7 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#FBF1EE] border border-[#9B2226]/25 flex items-center justify-center text-[#9B2226]">
+                      <IconHeartHandshake className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#14281D]">
+                      El peso emocional de fin de año
+                    </h3>
+                    <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                      Diciembre funciona como una lupa afectiva. Se activan ausencias, metas que
+                      cambiaron de forma y la presión social de mostrar una felicidad impecable.
+                      Sentir nostalgia o saturación en estas fechas no es debilidad: es respuesta
+                      humana ante un año vivido con intensidad.
+                    </p>
+                  </div>
+                  <p className="text-xs text-[#4F685B] pt-3 border-t border-[#EAE3D7]">
+                    Validación · Nombrar lo que pesa
+                  </p>
+                </article>
+
+                <article className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/40 shadow-lg shadow-black/15 p-6 sm:p-7 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#EEF4F0] border border-[#1B4332]/20 flex items-center justify-center text-[#1B4332]">
+                      <IconWind className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#14281D]">
+                      El ciclo del cansancio acumulado
+                    </h3>
+                    <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                      Cuando pasas meses sosteniendo responsabilidades en silencio, tu sistema
+                      nervioso permanece en alerta de baja intensidad. Al bajar el ritmo laboral o
+                      cotidiano, emerge de golpe la fatiga acumulada. No te falta disciplina: tu
+                      cuerpo está cobrando la tregua que pospusiste.
+                    </p>
+                  </div>
+                  <p className="text-xs text-[#4F685B] pt-3 border-t border-[#EAE3D7]">
+                    Fisiología · Escuchar la señal corporal
+                  </p>
+                </article>
+
+                <article className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/40 shadow-lg shadow-black/15 p-6 sm:p-7 flex flex-col justify-between space-y-4">
+                  <div className="space-y-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#FBF5E6] border border-[#D4A348]/40 flex items-center justify-center text-[#9B2226]">
+                      <IconSparkles className="w-5 h-5" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[#14281D]">
+                      Por qué no debemos pelear con el calendario
+                    </h3>
+                    <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                      El 31 de diciembre es una convención astronómica y cultural, no un examen de
+                      valor personal. Pelear con la fecha genera culpa y prisa tóxica. Desde la PNL,
+                      cerramos el ciclo con dignidad cuando soltamos la exigencia cronológica y
+                      respetamos nuestro tiempo interno de maduración.
+                    </p>
+                  </div>
+                  <p className="text-xs text-[#4F685B] pt-3 border-t border-[#EAE3D7]">
+                    Reencuadre PNL · Ritmo orgánico
+                  </p>
+                </article>
+              </div>
+            </section>
+
+            <section className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-[#E6DFD2]">
+                <div>
+                  <p className="text-xs font-semibold text-[#9B2226]">
+                    02. Recorrido de la sesión
+                  </p>
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#14281D] mt-1">
+                    Qué harás en este Kit Digital
+                  </h2>
+                </div>
+                <p className="text-sm text-[#455E51] max-w-md">
+                  Tus respuestas se guardan únicamente en tu navegador para que escribas con total
+                  privacidad y libertad.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
+                <button
+                  type="button"
+                  onClick={() => onNavigate('inventario')}
+                  className="text-left group p-3 -m-3 rounded-xl hover:bg-[#F3F6F3] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226]"
+                >
+                  <span className="text-xs font-semibold text-[#9B2226] tabular-nums">Paso 01</span>
+                  <h3 className="text-base font-bold text-[#14281D] mt-1 group-hover:text-[#9B2226] transition-colors">
+                    Inventario del Alma
+                  </h3>
+                  <p className="text-sm text-[#455E51] mt-1.5 leading-relaxed">
+                    Tres espacios de escritura terapéutica para reconocer tu resiliencia, soltar
+                    mandatos ajenos y rescatar tu victoria secreta.
+                  </p>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onNavigate('botiquin')}
+                  className="text-left group p-3 -m-3 rounded-xl hover:bg-[#F3F6F3] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226]"
+                >
+                  <span className="text-xs font-semibold text-[#9B2226] tabular-nums">Paso 02</span>
+                  <h3 className="text-base font-bold text-[#14281D] mt-1 group-hover:text-[#9B2226] transition-colors">
+                    Botiquín de Emergencia Somática
+                  </h3>
+                  <p className="text-sm text-[#455E51] mt-1.5 leading-relaxed">
+                    Temporizadores guiados de Respiración Cuadrada 4-4-4-4, Ancla de Autocontención
+                    y Corte Kinestésico de Frecuencia.
+                  </p>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => onNavigate('resumen')}
+                  className="text-left group p-3 -m-3 rounded-xl hover:bg-[#F3F6F3] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226]"
+                >
+                  <span className="text-xs font-semibold text-[#9B2226] tabular-nums">Paso 03</span>
+                  <h3 className="text-base font-bold text-[#14281D] mt-1 group-hover:text-[#9B2226] transition-colors">
+                    Resumen y Descarga
+                  </h3>
+                  <p className="text-sm text-[#455E51] mt-1.5 leading-relaxed">
+                    Consolida tu auditoría en un reporte limpio listo para copiar, descargar o
+                    imprimir como recordatorio personal.
+                  </p>
+                </button>
+              </div>
+            </section>
+          </div>
+        );
+      }
+
+      /* =====================================================================
+       * PANTALLA 2: INVENTARIO DEL ALMA (ESCRITURA TERAPÉUTICA)
+       * ===================================================================== */
+      const INVENTORY_FIELDS = [
+        {
+          key: 'resilience',
+          indexLabel: '01.',
+          title: 'Tu resiliencia invisible y supervivencia cotidiana',
+          subtitle:
+            'Nombra aquello que atravesaste este año sin aplausos ni medallas: días difíciles en los que seguiste en pie, silencios que sostuviste o tormentas internas que navegaste en calma aparente.',
+          placeholder:
+            'Ejemplo: Hubo semanas en las que despertaba agotada y aun así cumplí con lo esencial, cuidé a los míos y no me rendí aunque por dentro sentía miedo...',
+          starterSentence: 'Lo que nadie vio que logré sostener este año fue ',
+          guidingQuestions: [
+            '¿Qué situación cotidiana te exigió el doble de energía emocional de lo que los demás imaginaban?',
+            '¿En qué momento elegiste respirar y continuar cuando lo más fácil era quebrarte o rendirte?',
+            '¿Qué herida o incertidumbre aprendiste a cargar con dignidad mientras seguías tu vida?',
+          ],
+        },
+        {
+          key: 'releasedExpectations',
+          indexLabel: '02.',
+          title: 'Expectativas ajenas de las que te despojas',
+          subtitle:
+            'Identifica los mandatos familiares, comparaciones sociales, metas heredadas o ritmos impuestos por el calendario que hoy decides dejar en la puerta antes de continuar.',
+          placeholder:
+            'Ejemplo: Me despojo de la idea de que tengo que tener todo resuelto antes de enero, de complacer a todos en las reuniones y de medir mi valor por mi productividad...',
+          starterSentence: 'Hoy elijo soltar la expectativa ajena de que debo ',
+          guidingQuestions: [
+            '¿Qué "debería" te repites con culpa que en realidad nació de la voz o el miedo de alguien más?',
+            '¿Qué meta de inicio de año ya no representa a la persona en la que te convertiste hoy?',
+            '¿Qué pasaría si te dieras permiso de cerrar este ciclo con suavidad en lugar de exigencia?',
+          ],
+        },
+        {
+          key: 'secretVictory',
+          indexLabel: '03.',
+          title: 'Tu victoria secreta del año',
+          subtitle:
+            'Rescata ese triunfo íntimo que no cabe en un currículum ni en una red social: un límite que pusiste a tiempo, una conversación honesta, un hábito de cuidado o una vez que te elegiste a ti.',
+          placeholder:
+            'Ejemplo: Mi victoria secreta fue decir "no" sin dar diez excusas, o haber pedido ayuda cuando antes me habría callado por orgullo...',
+          starterSentence: 'Aunque nadie más lo sepa o lo aplauda, mi mayor victoria íntima fue ',
+          guidingQuestions: [
+            '¿En qué decisión pequeña fuiste profundamente leal contigo misma?',
+            '¿Qué antiguo patrón automático lograste frenar al menos una vez este año?',
+            '¿De qué gesto tuyo te sentirías orgullosa si lo vieras en alguien a quien amas?',
+          ],
+        },
+      ];
+
+      function InventoryScreen({
+        inventory,
+        analysis,
+        onChangeInventory,
+        onAnalyze,
+        onGoToSomatic,
+        onNavigate,
+      }) {
+        const [openGuides, setOpenGuides] = useState({});
+        const [validationMessage, setValidationMessage] = useState(null);
+        const summaryRef = useRef(null);
+
+        const totalWords =
+          countWords(inventory.resilience) +
+          countWords(inventory.releasedExpectations) +
+          countWords(inventory.secretVictory);
+
+        const toggleGuide = (key) => {
+          setOpenGuides((prev) => ({ ...prev, [key]: !prev[key] }));
+        };
+
+        const handleTextChange = (key, value) => {
+          if (validationMessage) {
+            setValidationMessage(null);
+          }
+          onChangeInventory({
+            ...inventory,
+            [key]: value,
+          });
+        };
+
+        const handleInsertStarter = (key, starter) => {
+          const current = inventory[key];
+          const nextValue = current.trim() ? `${current.trimEnd()}\n\n${starter}` : starter;
+          handleTextChange(key, nextValue);
+        };
+
+        const handleAnalyzeClick = () => {
+          if (totalWords === 0) {
+            setValidationMessage(
+              'Escribe al menos unas líneas en cualquiera de los tres pilares para generar tu tarjeta de síntesis emocional.'
+            );
+            return;
+          }
+          setValidationMessage(null);
+          onAnalyze();
+          window.setTimeout(() => {
+            summaryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        };
+
+        return (
+          <div className="space-y-10">
+            <header className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+              <div className="space-y-3 max-w-2xl">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-[#4F685B]">
+                  <span className="text-[#9B2226] font-semibold">Módulo 01</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Escritura Terapéutica</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Guardado automático local</span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-[#14281D] tracking-tight">
+                  Inventario del Alma
+                </h1>
+                <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                  Tómate unos minutos sin prisa. No hay respuestas correctas ni extensión
+                  obligatoria; escribe como si hablaras con una parte sabia y compasiva de ti misma.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-6 pt-4 lg:pt-0 border-t lg:border-t-0 border-[#E6DFD2] shrink-0">
+                <div>
+                  <p className="text-xs text-[#4F685B]">Palabras escritas</p>
+                  <p className="text-2xl font-bold text-[#14281D] tabular-nums">{totalWords}</p>
+                </div>
+                <div className="h-9 w-px bg-[#D9CEBC]" aria-hidden="true" />
+                <div>
+                  <p className="text-xs text-[#4F685B]">Pilares activos</p>
+                  <p className="text-2xl font-bold text-[#9B2226] tabular-nums">
+                    {
+                      [
+                        inventory.resilience,
+                        inventory.releasedExpectations,
+                        inventory.secretVictory,
+                      ].filter((txt) => countWords(txt) > 0).length
+                    }
+                    /3
+                  </p>
+                </div>
+              </div>
+            </header>
+
+            <div className="space-y-6">
+              {INVENTORY_FIELDS.map((field) => {
+                const currentValue = inventory[field.key];
+                const words = countWords(currentValue);
+                const chars = currentValue.length;
+                const isGuideOpen = Boolean(openGuides[field.key]);
+                const dynamicRows = Math.max(5, Math.min(14, currentValue.split('\n').length + 3));
+
+                return (
+                  <section
+                    key={field.key}
+                    className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/40 shadow-lg shadow-black/15 p-6 sm:p-8 space-y-5"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                      <div className="space-y-2 max-w-3xl">
+                        <h2 className="text-lg sm:text-xl font-bold text-[#14281D]">
+                          <span className="text-[#9B2226] mr-2 tabular-nums">
+                            {field.indexLabel}
+                          </span>
+                          {field.title}
+                        </h2>
+                        <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                          {field.subtitle}
+                        </p>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => toggleGuide(field.key)}
+                        aria-expanded={isGuideOpen}
+                        className="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-4 py-2 rounded-xl bg-[#F3F6F3] hover:bg-[#E7EEE9] text-[#14281D] text-xs font-semibold border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap shrink-0 self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B4332]"
+                      >
+                        <span>{isGuideOpen ? 'Ocultar guía' : 'Preguntas guía'}</span>
+                        {isGuideOpen ? (
+                          <IconChevronUp className="w-4 h-4 text-[#9B2226]" />
+                        ) : (
+                          <IconChevronDown className="w-4 h-4 text-[#9B2226]" />
+                        )}
+                      </button>
+                    </div>
+
+                    {isGuideOpen && (
+                      <div className="pt-4 border-t border-[#E6DFD2] space-y-3">
+                        <p className="text-xs font-semibold text-[#9B2226]">
+                          Disparadores para desbloquear tu escritura
+                        </p>
+                        <ul className="space-y-2 text-sm text-[#2D4539]">
+                          {field.guidingQuestions.map((question, idx) => (
+                            <li key={idx} className="flex items-start gap-2.5">
+                              <span className="text-[#9B2226] font-semibold tabular-nums">
+                                {idx + 1}.
+                              </span>
+                              <span>{question}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="pt-1">
+                          <button
+                            type="button"
+                            onClick={() => handleInsertStarter(field.key, field.starterSentence)}
+                            className="inline-flex items-center gap-1.5 min-h-[40px] px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[#9B2226] bg-[#FBF1EE] hover:bg-[#F6E1DB] border border-[#9B2226]/20 transition-colors cursor-pointer whitespace-nowrap"
+                          >
+                            <span>Insertar frase disparadora</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="space-y-2">
+                      <label htmlFor={`field-${field.key}`} className="sr-only">
+                        {field.title}
+                      </label>
+                      <textarea
+                        id={`field-${field.key}`}
+                        rows={dynamicRows}
+                        value={currentValue}
+                        onChange={(event) => handleTextChange(field.key, event.target.value)}
+                        placeholder={field.placeholder}
+                        className="w-full rounded-xl border border-[#C9D6CD] bg-white px-4 py-3.5 text-[15px] leading-relaxed text-[#14281D] placeholder:text-[#789083] focus:outline-none focus:ring-2 focus:ring-[#9B2226]/25 focus:border-[#9B2226] transition-colors resize-y"
+                      />
+                      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#4F685B] pt-1">
+                        <span>
+                          {words > 0
+                            ? 'Escrito y respaldado en esta sesión'
+                            : 'Espacio listo para tu reflexión'}
+                        </span>
+                        <span className="tabular-nums">
+                          {words} {words === 1 ? 'palabra' : 'palabras'} · {chars} caracteres
+                        </span>
+                      </div>
+                    </div>
+                  </section>
+                );
+              })}
+            </div>
+
+            <div className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <h3 className="text-base font-bold text-[#14281D]">
+                  ¿Lista para integrar lo que escribiste?
+                </h3>
+                <p className="text-sm text-[#455E51]">
+                  Generaremos una síntesis visual con tus ejes emocionales y una recomendación
+                  somática.
+                </p>
+                {validationMessage && (
+                  <p className="text-sm font-medium text-[#9B2226] pt-1" role="alert">
+                    {validationMessage}
+                  </p>
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleAnalyzeClick}
+                className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-6 py-3 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] active:scale-[0.99] text-white font-semibold text-sm sm:text-base shadow-sm transition-all cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226] focus-visible:ring-offset-2"
+              >
+                <IconSparkles className="w-4 h-4" />
+                <span>Guardar y Analizar Mis Respuestas</span>
+              </button>
+            </div>
+
+            {analysis && (
+              <section
+                ref={summaryRef}
+                aria-live="polite"
+                className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/60 shadow-lg shadow-black/20 overflow-hidden"
+              >
+                <div className="bg-[#FBF5E6] px-6 sm:px-8 py-6 border-b border-[#E5D7B8] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="space-y-1.5">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-[#9B2226]">
+                      <IconCheckCircle className="w-4 h-4" />
+                      <span>Tarjeta de Síntesis Emocional · Reencuadre PNL</span>
+                    </div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#14281D]">
+                      {analysis.headline}
+                    </h2>
+                  </div>
+
+                  <div className="text-xs text-[#455E51] tabular-nums shrink-0">
+                    {analysis.totalWords} palabras · {analysis.completedPillars}/3 pilares
+                  </div>
+                </div>
+
+                <div className="p-6 sm:p-8 space-y-8">
+                  <p className="text-[15px] sm:text-base text-[#2D4539] leading-relaxed max-w-3xl">
+                    {analysis.reframeMessage}
+                  </p>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[#E6DFD2]">
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold text-[#9B2226]">Resiliencia nombrada</p>
+                      <p className="text-sm text-[#14281D] leading-relaxed">
+                        “{analysis.resilienceExcerpt}”
+                      </p>
+                    </div>
+                    <div className="space-y-2 md:border-l md:border-[#E6DFD2] md:pl-6">
+                      <p className="text-xs font-semibold text-[#1B4332]">Mandato que sueltas</p>
+                      <p className="text-sm text-[#14281D] leading-relaxed">
+                        “{analysis.releaseExcerpt}”
+                      </p>
+                    </div>
+                    <div className="space-y-2 md:border-l md:border-[#E6DFD2] md:pl-6">
+                      <p className="text-xs font-semibold text-[#9B2226]">Victoria íntima</p>
+                      <p className="text-sm text-[#14281D] leading-relaxed">
+                        “{analysis.victoryExcerpt}”
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-[#E6DFD2] space-y-4">
+                    <h3 className="text-sm font-bold text-[#14281D]">
+                      Patrones emocionales observados en tu texto
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      {analysis.themes.map((theme) => (
+                        <div key={theme.id} className="space-y-1.5">
+                          <p className="text-sm font-semibold text-[#14281D]">{theme.label}</p>
+                          <p className="text-sm text-[#455E51] leading-relaxed">
+                            {theme.reflection}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-[#E6DFD2] flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                    <div className="space-y-2 max-w-2xl">
+                      <p className="text-xs font-semibold text-[#9B2226]">
+                        Frase ancla para tu cierre de año
+                      </p>
+                      <p className="text-base sm:text-lg font-semibold text-[#14281D] leading-snug">
+                        “{analysis.affirmation}”
+                      </p>
+                      <p className="text-sm text-[#455E51] pt-1">
+                        Sugerencia somática:{' '}
+                        <span className="font-semibold text-[#14281D]">
+                          {protocolLabel(analysis.recommendedProtocol)}
+                        </span>{' '}
+                        — {analysis.recommendedReason}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                      <button
+                        type="button"
+                        onClick={() => onGoToSomatic(analysis.recommendedProtocol)}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] text-white font-semibold text-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226]"
+                      >
+                        <IconWind className="w-4 h-4" />
+                        <span>Ir al Botiquín Somático</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => onNavigate('resumen')}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-xl bg-[#F3F6F3] hover:bg-[#E7EEE9] text-[#14281D] font-semibold text-sm border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B4332]"
+                      >
+                        <IconFileText className="w-4 h-4 text-[#9B2226]" />
+                        <span>Ver Resumen</span>
+                        <IconArrowRight className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+          </div>
+        );
+      }
+
+      /* =====================================================================
+       * PANTALLA 3: BOTIQUÍN DE EMERGENCIA SOMÁTICA
+       * ===================================================================== */
+      const PHASE_DURATION_MS = 4000;
+      const FULL_CYCLE_MS = PHASE_DURATION_MS * 4;
+
+      const BOX_PHASES = [
+        {
+          id: 'inhale',
+          label: 'Inhala suavemente',
+          instruction: 'Lleva el aire por la nariz hacia el abdomen sin forzar los hombros.',
+          sideLabel: 'Lado 1 · Entrada',
+        },
+        {
+          id: 'holdFull',
+          label: 'Sostén en calma',
+          instruction: 'Permite que el aire repose dentro sin apretar la mandíbula ni el pecho.',
+          sideLabel: 'Lado 2 · Pausa llena',
+        },
+        {
+          id: 'exhale',
+          label: 'Exhala lento',
+          instruction:
+            'Suelta el aire despacio por la boca o nariz, dejando caer el peso de los brazos.',
+          sideLabel: 'Lado 3 · Descarga',
+        },
+        {
+          id: 'holdEmpty',
+          label: 'Sostén en vacío',
+          instruction:
+            'Descansa en el silencio breve antes de que el cuerpo pida el siguiente aire.',
+          sideLabel: 'Lado 4 · Quietud',
+        },
+      ];
+
+      const ANCHOR_STEPS = [
+        {
+          title: 'Aterrizaje plantar y peso corporal',
+          durationSec: 25,
+          bodyCue: 'Planta de los pies · Silla o suelo',
+          pnlInstruction:
+            'Apoya ambas plantas firmemente en el suelo. Siente la gravedad sosteniendo tus piernas y tu cadera: no tienes que cargar tu propio peso sola ahora mismo.',
+        },
+        {
+          title: 'Mano en el esternón y presión cálida',
+          durationSec: 30,
+          bodyCue: 'Palma abierta · Centro del pecho',
+          pnlInstruction:
+            'Coloca una mano abierta en el centro de tu pecho con presión amable y firme. Imagina que esa mano le comunica a tu amígdala: "En este instante estamos a salvo".',
+        },
+        {
+          title: 'Abrazo de mariposa y contención bilateral',
+          durationSec: 35,
+          bodyCue: 'Brazos cruzados · Hombros o costados',
+          pnlInstruction:
+            'Cruza tus brazos suavemente tomando tus hombros o brazos contrarios. Alterna toques muy lentos (izquierda, derecha, izquierda) mientras respiras sin prisa.',
+        },
+        {
+          title: 'Sellado de ancla verbal en PNL',
+          durationSec: 20,
+          bodyCue: 'Postura erguida y suave · Exhalación larga',
+          pnlInstruction:
+            'Mantén el contacto cálido y repite en voz baja o mentalmente: "Reconozco lo que siento, me contengo y avanzo a mi ritmo". Suelta las manos despacio al terminar.',
+        },
+      ];
+
+      const FREQUENCY_CUT_STEPS = [
+        {
+          title: 'Ruptura de postura y eje físico',
+          durationSec: 15,
+          bodyCue: 'Levántate o cambia de ángulo',
+          pnlInstruction:
+            'Si estabas encorvada frente a una pantalla o rumiando un pensamiento, ponte de pie o cambia de postura de inmediato. Mira un punto distinto de la habitación.',
+        },
+        {
+          title: 'Expansión de visión periférica (Modo Panorámico)',
+          durationSec: 20,
+          bodyCue: 'Mirada suave · 180 grados',
+          pnlInstruction:
+            'Fija la vista en un punto al frente y, sin mover los ojos, amplía tu atención hacia las paredes laterales. La visión panorámica desactiva la respuesta de túnel y alerta.',
+        },
+        {
+          title: 'Descarga kinestésica de brazos y hombros',
+          durationSec: 20,
+          bodyCue: 'Sacudida consciente · Mandíbula suelta',
+          pnlInstruction:
+            'Sube los hombros hacia las orejas tres segundos y déjalos caer de golpe al exhalar. Sacude suavemente tus manos y muñecas como quitando polvo acumulado.',
+        },
+        {
+          title: 'Doble suspiro fisiológico',
+          durationSec: 20,
+          bodyCue: '2 inhalaciones nasales · 1 exhalación larga',
+          pnlInstruction:
+            'Inhala profundo por la nariz, toma un segundo sorbo corto de aire arriba para abrir los alvéolos, y exhala largo y audible por la boca. Repite tres veces.',
+        },
+        {
+          title: 'Reanclaje de frecuencia presente',
+          durationSec: 15,
+          bodyCue: 'Chasquido o toque en el antebrazo',
+          pnlInstruction:
+            'Presiona suavemente tu muñeca mientras exhalas con serenidad y di: "Corto la inercia del año pasado; habito este momento con claridad".',
+        },
+      ];
+
+      function SomaticKitScreen({
+        activeProtocol,
+        onSelectProtocol,
+        stats,
+        onCompleteBoxCycle,
+        onCompleteAnchor,
+        onCompleteFrequencyCut,
+        onNavigate,
+      }) {
+        const [boxRunning, setBoxRunning] = useState(false);
+        const [targetCycles, setTargetCycles] = useState(4);
+        const [sessionCycles, setSessionCycles] = useState(0);
+        const [elapsedInCycleMs, setElapsedInCycleMs] = useState(0);
+        const [soundEnabled, setSoundEnabled] = useState(true);
+        const [boxCompletedBanner, setBoxCompletedBanner] = useState(false);
+
+        const lastTickRef = useRef(null);
+        const prevPhaseRef = useRef(0);
+
+        const [anchorStepIdx, setAnchorStepIdx] = useState(0);
+        const [anchorSecondsLeft, setAnchorSecondsLeft] = useState(ANCHOR_STEPS[0].durationSec);
+        const [anchorRunning, setAnchorRunning] = useState(false);
+        const [anchorDoneFlash, setAnchorDoneFlash] = useState(false);
+
+        const [cutStepIdx, setCutStepIdx] = useState(0);
+        const [cutSecondsLeft, setCutSecondsLeft] = useState(
+          FREQUENCY_CUT_STEPS[0].durationSec
+        );
+        const [cutRunning, setCutRunning] = useState(false);
+        const [cutDoneFlash, setCutDoneFlash] = useState(false);
+
+        useEffect(() => {
+          if (!boxRunning) {
+            lastTickRef.current = null;
+            return;
+          }
+
+          let rafId = 0;
+          const step = (now) => {
+            if (lastTickRef.current === null) {
+              lastTickRef.current = now;
+            }
+            const delta = now - lastTickRef.current;
+            lastTickRef.current = now;
+
+            setElapsedInCycleMs((prev) => {
+              const next = prev + delta;
+              const newPhaseIndex = Math.floor((next % FULL_CYCLE_MS) / PHASE_DURATION_MS);
+              if (newPhaseIndex !== prevPhaseRef.current) {
+                prevPhaseRef.current = newPhaseIndex;
+                if (soundEnabled) {
+                  playBellChime('phase');
+                }
+              }
+
+              if (next >= FULL_CYCLE_MS) {
+                const remainder = next % FULL_CYCLE_MS;
+                onCompleteBoxCycle();
+                setSessionCycles((currCycles) => {
+                  const updated = currCycles + 1;
+                  if (updated >= targetCycles) {
+                    setBoxRunning(false);
+                    setBoxCompletedBanner(true);
+                    if (soundEnabled) {
+                      playBellChime('complete');
+                    }
+                  }
+                  return updated;
+                });
+                return remainder;
+              }
+              return next;
+            });
+
+            rafId = window.requestAnimationFrame(step);
+          };
+
+          rafId = window.requestAnimationFrame(step);
+          return () => window.cancelAnimationFrame(rafId);
+        }, [boxRunning, targetCycles, soundEnabled, onCompleteBoxCycle]);
+
+        useEffect(() => {
+          if (!anchorRunning) {
+            return;
+          }
+          const timer = window.setInterval(() => {
+            setAnchorSecondsLeft((prev) => {
+              if (prev > 1) {
+                return prev - 1;
+              }
+              if (anchorStepIdx < ANCHOR_STEPS.length - 1) {
+                const nextIdx = anchorStepIdx + 1;
+                setAnchorStepIdx(nextIdx);
+                if (soundEnabled) {
+                  playBellChime('phase');
+                }
+                return ANCHOR_STEPS[nextIdx].durationSec;
+              }
+              setAnchorRunning(false);
+              setAnchorDoneFlash(true);
+              if (soundEnabled) {
+                playBellChime('complete');
+              }
+              onCompleteAnchor();
+              return 0;
+            });
+          }, 1000);
+          return () => window.clearInterval(timer);
+        }, [anchorRunning, anchorStepIdx, soundEnabled, onCompleteAnchor]);
+
+        useEffect(() => {
+          if (!cutRunning) {
+            return;
+          }
+          const timer = window.setInterval(() => {
+            setCutSecondsLeft((prev) => {
+              if (prev > 1) {
+                return prev - 1;
+              }
+              if (cutStepIdx < FREQUENCY_CUT_STEPS.length - 1) {
+                const nextIdx = cutStepIdx + 1;
+                setCutStepIdx(nextIdx);
+                if (soundEnabled) {
+                  playBellChime('phase');
+                }
+                return FREQUENCY_CUT_STEPS[nextIdx].durationSec;
+              }
+              setCutRunning(false);
+              setCutDoneFlash(true);
+              if (soundEnabled) {
+                playBellChime('complete');
+              }
+              onCompleteFrequencyCut();
+              return 0;
+            });
+          }, 1000);
+          return () => window.clearInterval(timer);
+        }, [cutRunning, cutStepIdx, soundEnabled, onCompleteFrequencyCut]);
+
+        const phaseIndex = Math.min(3, Math.floor(elapsedInCycleMs / PHASE_DURATION_MS));
+        const currentPhase = BOX_PHASES[phaseIndex];
+        const msWithinPhase = elapsedInCycleMs % PHASE_DURATION_MS;
+        const phaseProgress = msWithinPhase / PHASE_DURATION_MS;
+        const secondsRemaining = Math.max(
+          1,
+          Math.ceil((PHASE_DURATION_MS - msWithinPhase) / 1000)
+        );
+
+        let circleScale = 0.76;
+        if (currentPhase.id === 'inhale') {
+          circleScale = 0.76 + 0.34 * phaseProgress;
+        } else if (currentPhase.id === 'holdFull') {
+          circleScale = 1.1;
+        } else if (currentPhase.id === 'exhale') {
+          circleScale = 1.1 - 0.34 * phaseProgress;
+        } else {
+          circleScale = 0.76;
+        }
+
+        const handleToggleSound = () => {
+          setSoundEnabled((prev) => {
+            const next = !prev;
+            if (next) {
+              playBellChime('phase');
+            }
+            return next;
+          });
+        };
+
+        const handleToggleBox = () => {
+          if (!boxRunning) {
+            setBoxCompletedBanner(false);
+            if (sessionCycles >= targetCycles) {
+              setSessionCycles(0);
+              setElapsedInCycleMs(0);
+              prevPhaseRef.current = 0;
+            }
+            if (soundEnabled) {
+              playBellChime('phase');
+            }
+          }
+          setBoxRunning((prev) => !prev);
+        };
+
+        const handleResetBox = () => {
+          setBoxRunning(false);
+          setElapsedInCycleMs(0);
+          setSessionCycles(0);
+          setBoxCompletedBanner(false);
+          prevPhaseRef.current = 0;
+        };
+
+        const handleSelectAnchorStep = (index) => {
+          setAnchorRunning(false);
+          setAnchorDoneFlash(false);
+          setAnchorStepIdx(index);
+          setAnchorSecondsLeft(ANCHOR_STEPS[index].durationSec);
+        };
+
+        const handleSelectCutStep = (index) => {
+          setCutRunning(false);
+          setCutDoneFlash(false);
+          setCutStepIdx(index);
+          setCutSecondsLeft(FREQUENCY_CUT_STEPS[index].durationSec);
+        };
+
+        const currentAnchorStep = ANCHOR_STEPS[anchorStepIdx];
+        const currentCutStep = FREQUENCY_CUT_STEPS[cutStepIdx];
+
+        return (
+          <div className="space-y-8">
+            <header className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+              <div className="space-y-3 max-w-2xl">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-[#4F685B]">
+                  <span className="text-[#9B2226] font-semibold">Módulo 02</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Regulación del Sistema Nervioso</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Uso inmediato en momentos de saturación</span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-bold text-[#14281D] tracking-tight">
+                  Botiquín de Emergencia Somática
+                </h1>
+                <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                  Cuando la mente sigue rumiando el año, razonar no basta: es necesario hablarle al
+                  cuerpo en su propio idioma. Elige una de las tres herramientas guiadas según lo
+                  que necesites hoy.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-5 pt-4 lg:pt-0 border-t lg:border-t-0 border-[#E6DFD2] shrink-0">
+                <div>
+                  <p className="text-xs text-[#4F685B]">Ciclos respiración</p>
+                  <p className="text-2xl font-bold text-[#14281D] tabular-nums">
+                    {stats.boxBreathingCycles}
+                  </p>
+                </div>
+                <div className="h-9 w-px bg-[#D9CEBC]" aria-hidden="true" />
+                <div>
+                  <p className="text-xs text-[#4F685B]">Prácticas guiadas</p>
+                  <p className="text-2xl font-bold text-[#9B2226] tabular-nums">
+                    {stats.anchorCompletedCount + stats.frequencyCutCompletedCount}
+                  </p>
+                </div>
+              </div>
+            </header>
+
+            <div
+              role="tablist"
+              aria-label="Protocolos somáticos"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 bg-[#11281E] border border-[#2B5240] rounded-2xl"
+            >
+              <button
+                type="button"
+                role="tab"
+                aria-selected={activeProtocol === 'respiracion'}
+                onClick={() => onSelectProtocol('respiracion')}
+                className={`flex items-center justify-center gap-2 min-h-[46px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A348] ${
+                  activeProtocol === 'respiracion'
+                    ? 'bg-[#FDFBF7] text-[#14281D] shadow-sm'
+                    : 'text-[#C7D6CE] hover:text-[#FAF7F0]'
+                }`}
+              >
+                <IconWind
+                  className={`w-4 h-4 shrink-0 ${
+                    activeProtocol === 'respiracion' ? 'text-[#9B2226]' : 'text-[#F2C97D]'
+                  }`}
+                />
+                <span>Respiración Cuadrada</span>
+              </button>
+
+              <button
+                type="button"
+                role="tab"
+                aria-selected={activeProtocol === 'ancla'}
+                onClick={() => onSelectProtocol('ancla')}
+                className={`flex items-center justify-center gap-2 min-h-[46px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A348] ${
+                  activeProtocol === 'ancla'
+                    ? 'bg-[#FDFBF7] text-[#14281D] shadow-sm'
+                    : 'text-[#C7D6CE] hover:text-[#FAF7F0]'
+                }`}
+              >
+                <IconHandHeart
+                  className={`w-4 h-4 shrink-0 ${
+                    activeProtocol === 'ancla' ? 'text-[#9B2226]' : 'text-[#F2C97D]'
+                  }`}
+                />
+                <span>Ancla de Autocontención</span>
+              </button>
+
+              <button
+                type="button"
+                role="tab"
+                aria-selected={activeProtocol === 'corte'}
+                onClick={() => onSelectProtocol('corte')}
+                className={`flex items-center justify-center gap-2 min-h-[46px] px-4 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A348] ${
+                  activeProtocol === 'corte'
+                    ? 'bg-[#FDFBF7] text-[#14281D] shadow-sm'
+                    : 'text-[#C7D6CE] hover:text-[#FAF7F0]'
+                }`}
+              >
+                <IconActivity
+                  className={`w-4 h-4 shrink-0 ${
+                    activeProtocol === 'corte' ? 'text-[#9B2226]' : 'text-[#F2C97D]'
+                  }`}
+                />
+                <span>Corte Kinestésico</span>
+              </button>
+            </div>
+
+            {activeProtocol === 'respiracion' && (
+              <section className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                  <div className="lg:col-span-6 flex flex-col items-center justify-center">
+                    <div className="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center rounded-3xl bg-[#F3F6F3] border border-[#C9D6CD]">
+                      <div
+                        className={`absolute top-3 inset-x-10 h-1 rounded-full transition-colors ${
+                          phaseIndex === 0 ? 'bg-[#9B2226]' : 'bg-[#D6DFD8]'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <div
+                        className={`absolute right-3 inset-y-10 w-1 rounded-full transition-colors ${
+                          phaseIndex === 1 ? 'bg-[#D4A348]' : 'bg-[#D6DFD8]'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <div
+                        className={`absolute bottom-3 inset-x-10 h-1 rounded-full transition-colors ${
+                          phaseIndex === 2 ? 'bg-[#1B4332]' : 'bg-[#D6DFD8]'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <div
+                        className={`absolute left-3 inset-y-10 w-1 rounded-full transition-colors ${
+                          phaseIndex === 3 ? 'bg-[#D4A348]' : 'bg-[#D6DFD8]'
+                        }`}
+                        aria-hidden="true"
+                      />
+
+                      <div
+                        className="absolute w-48 h-48 rounded-full bg-[#D4A348]/25 will-change-transform pointer-events-none"
+                        style={{
+                          transform: `scale(${circleScale * 1.14})`,
+                        }}
+                      />
+                      <div
+                        className="absolute w-40 h-40 rounded-full bg-gradient-to-br from-[#D4A348] via-[#B4432C] to-[#9B2226] shadow-md will-change-transform pointer-events-none"
+                        style={{
+                          transform: `scale(${circleScale})`,
+                        }}
+                      />
+                      <div className="relative z-10 flex flex-col items-center justify-center text-white px-4 text-center select-none">
+                        <span className="text-4xl sm:text-5xl font-bold tabular-nums leading-none">
+                          {boxRunning ? secondsRemaining : 4}
+                        </span>
+                        <span className="text-xs font-semibold mt-1.5 drop-shadow-xs">
+                          {boxRunning ? currentPhase.label : 'Listo (4s)'}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex items-center gap-3 text-xs text-[#4F685B] tabular-nums">
+                      <span>{currentPhase.sideLabel}</span>
+                      <span aria-hidden="true">·</span>
+                      <span>
+                        Ciclo {Math.min(sessionCycles + (boxRunning ? 1 : 0), targetCycles)} de{' '}
+                        {targetCycles}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-6 space-y-6">
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold text-[#9B2226]">
+                        Técnica 01 · Ritmo 4-4-4-4 segundos
+                      </p>
+                      <h2 className="text-2xl font-bold text-[#14281D]">
+                        Respiración Cuadrada para frenar la alerta
+                      </h2>
+                      <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                        {boxRunning
+                          ? currentPhase.instruction
+                          : 'Igualar los tiempos de inhalación, pausa y exhalación envía una señal directa al nervio vago indicando que no hay peligro inmediato.'}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                      {BOX_PHASES.map((phase, idx) => {
+                        const isActive = boxRunning && phaseIndex === idx;
+                        return (
+                          <div
+                            key={phase.id}
+                            className={`p-3 rounded-xl border transition-colors ${
+                              isActive
+                                ? 'bg-[#FBF1EE] border-[#9B2226]'
+                                : 'bg-[#F3F6F3] border-[#D3DED6]'
+                            }`}
+                          >
+                            <p className="text-xs font-semibold text-[#9B2226] tabular-nums">
+                              0{idx + 1}. 4s
+                            </p>
+                            <p className="text-xs font-medium text-[#14281D] mt-0.5">
+                              {phase.label}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-[#E6DFD2]">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-medium text-[#455E51]">Meta de ciclos:</span>
+                        <div className="inline-flex items-center gap-1 p-1 bg-[#F3F6F3] rounded-lg border border-[#C9D6CD]">
+                          {[4, 6, 8].map((count) => (
+                            <button
+                              key={count}
+                              type="button"
+                              onClick={() => {
+                                setTargetCycles(count);
+                                setBoxCompletedBanner(false);
+                              }}
+                              className={`min-h-[36px] px-3 rounded-md text-xs font-semibold tabular-nums transition-colors cursor-pointer ${
+                                targetCycles === count
+                                  ? 'bg-[#1B4332] text-white'
+                                  : 'text-[#455E51] hover:text-[#14281D]'
+                              }`}
+                            >
+                              {count}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={handleToggleSound}
+                          className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-semibold border transition-colors cursor-pointer whitespace-nowrap ${
+                            soundEnabled
+                              ? 'bg-[#FBF5E6] border-[#D4A348] text-[#14281D]'
+                              : 'bg-[#F3F6F3] hover:bg-[#E7EEE9] border-[#C9D6CD] text-[#14281D]'
+                          }`}
+                        >
+                          {soundEnabled ? (
+                            <IconVolume2 className="w-4 h-4 text-[#9B2226]" />
+                          ) : (
+                            <IconVolumeX className="w-4 h-4 text-[#4F685B]" />
+                          )}
+                          <span>{soundEnabled ? 'Campana suave: Activa' : 'Campana suave: No'}</span>
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => playBellChime('phase')}
+                          title="Escuchar campana"
+                          className="inline-flex items-center justify-center min-h-[44px] px-3 py-2 rounded-xl bg-[#F3F6F3] hover:bg-[#E7EEE9] text-xs font-semibold text-[#14281D] border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap"
+                        >
+                          Probar tono
+                        </button>
+                      </div>
+                    </div>
+
+                    {boxCompletedBanner && (
+                      <div
+                        role="status"
+                        className="p-4 rounded-xl bg-[#FBF5E6] border border-[#D4A348] text-sm text-[#14281D] flex items-center gap-3"
+                      >
+                        <IconCheck className="w-5 h-5 text-[#9B2226] shrink-0" />
+                        <span>
+                          Completaste {targetCycles} ciclos de Respiración Cuadrada. Nota cómo
+                          cambiaron tus hombros y tu ritmo antes de continuar.
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={handleToggleBox}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] text-white font-semibold text-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226]"
+                      >
+                        {boxRunning ? (
+                          <>
+                            <IconPause className="w-4 h-4" />
+                            <span>Pausar Respiración</span>
+                          </>
+                        ) : (
+                          <>
+                            <IconPlay className="w-4 h-4" />
+                            <span>
+                              {elapsedInCycleMs > 0 && sessionCycles < targetCycles
+                                ? 'Reanudar Respiración'
+                                : 'Iniciar Respiración'}
+                            </span>
+                          </>
+                        )}
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleResetBox}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-xl bg-[#F3F6F3] hover:bg-[#E7EEE9] text-[#14281D] font-medium text-sm border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                      >
+                        <IconRotateCcw className="w-4 h-4 text-[#455E51]" />
+                        <span>Reiniciar</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {activeProtocol === 'ancla' && (
+              <section className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-10 space-y-8">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#E6DFD2]">
+                  <div className="space-y-1.5 max-w-2xl">
+                    <p className="text-xs font-semibold text-[#9B2226]">
+                      Técnica 02 · Contención física y PNL (1 min 50 s)
+                    </p>
+                    <h2 className="text-2xl font-bold text-[#14281D]">
+                      Ancla Somática de Autocontención
+                    </h2>
+                    <p className="text-[15px] text-[#2D4539]">
+                      Diseñada para momentos donde sientes vulnerabilidad, nudo en el pecho o
+                      sensación de desamparo. Sigue los 4 pasos con el temporizador guiado.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 shrink-0 self-start lg:self-auto">
+                    <button
+                      type="button"
+                      onClick={handleToggleSound}
+                      className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-semibold border transition-colors cursor-pointer whitespace-nowrap ${
+                        soundEnabled
+                          ? 'bg-[#FBF5E6] border-[#D4A348] text-[#14281D]'
+                          : 'bg-[#F3F6F3] border-[#C9D6CD] text-[#14281D]'
+                      }`}
+                    >
+                      {soundEnabled ? (
+                        <IconVolume2 className="w-4 h-4 text-[#9B2226]" />
+                      ) : (
+                        <IconVolumeX className="w-4 h-4 text-[#4F685B]" />
+                      )}
+                      <span>{soundEnabled ? 'Campana activa' : 'Sin sonido'}</span>
+                    </button>
+
+                    <div className="flex items-center gap-3 bg-[#F3F6F3] px-5 py-3 rounded-xl border border-[#C9D6CD]">
+                      <div>
+                        <p className="text-xs text-[#4F685B]">Paso actual</p>
+                        <p className="text-2xl font-bold text-[#9B2226] tabular-nums">
+                          {anchorSecondsLeft}s
+                        </p>
+                      </div>
+                      <div className="h-8 w-px bg-[#C9D6CD]" aria-hidden="true" />
+                      <div>
+                        <p className="text-xs text-[#4F685B]">Secuencia</p>
+                        <p className="text-base font-bold text-[#14281D] tabular-nums">
+                          {anchorStepIdx + 1} / {ANCHOR_STEPS.length}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {ANCHOR_STEPS.map((step, idx) => {
+                    const isCurrent = idx === anchorStepIdx;
+                    const isPast = idx < anchorStepIdx;
+                    return (
+                      <button
+                        key={step.title}
+                        type="button"
+                        onClick={() => handleSelectAnchorStep(idx)}
+                        className={`text-left p-4 rounded-xl border transition-colors cursor-pointer min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226] ${
+                          isCurrent
+                            ? 'bg-[#FBF1EE] border-[#9B2226]'
+                            : isPast
+                              ? 'bg-[#F3F6F3] border-[#C9D6CD]'
+                              : 'bg-white border-[#DFD7C8] hover:border-[#C5B8A1]'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between text-xs font-semibold tabular-nums">
+                          <span className={isCurrent ? 'text-[#9B2226]' : 'text-[#4F685B]'}>
+                            Paso 0{idx + 1}
+                          </span>
+                          <span className="text-[#4F685B]">{step.durationSec}s</span>
+                        </div>
+                        <p className="text-sm font-bold text-[#14281D] mt-1 line-clamp-2">
+                          {step.title}
+                        </p>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="bg-[#F3F6F3] rounded-2xl border border-[#C9D6CD] p-6 sm:p-8 space-y-5">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-xs font-semibold text-[#9B2226]">
+                      Zona corporal: {currentAnchorStep.bodyCue}
+                    </span>
+                    <span className="text-xs text-[#4F685B] tabular-nums">
+                      Duración sugerida: {currentAnchorStep.durationSec} segundos
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#14281D]">
+                    {currentAnchorStep.title}
+                  </h3>
+
+                  <p className="text-base text-[#2D4539] leading-relaxed max-w-3xl">
+                    {currentAnchorStep.pnlInstruction}
+                  </p>
+
+                  <div className="w-full h-2 bg-[#D6DFD8] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[#9B2226] transition-all duration-500"
+                      style={{
+                        width: `${Math.round(
+                          ((currentAnchorStep.durationSec - anchorSecondsLeft) /
+                            currentAnchorStep.durationSec) *
+                            100
+                        )}%`,
+                      }}
+                    />
+                  </div>
+
+                  {anchorDoneFlash && (
+                    <div
+                      role="status"
+                      className="p-4 rounded-xl bg-[#FBF5E6] border border-[#D4A348] text-sm text-[#14281D] flex items-center gap-2.5"
+                    >
+                      <IconCheck className="w-5 h-5 text-[#9B2226] shrink-0" />
+                      <span>
+                        Ancla Somática completada y registrada en tu resumen de sesión.
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setAnchorDoneFlash(false);
+                          if (anchorSecondsLeft === 0) {
+                            setAnchorStepIdx(0);
+                            setAnchorSecondsLeft(ANCHOR_STEPS[0].durationSec);
+                          }
+                          if (!anchorRunning && soundEnabled) {
+                            playBellChime('phase');
+                          }
+                          setAnchorRunning((prev) => !prev);
+                        }}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] text-white font-semibold text-sm transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                      >
+                        {anchorRunning ? (
+                          <>
+                            <IconPause className="w-4 h-4" />
+                            <span>Pausar guía</span>
+                          </>
+                        ) : (
+                          <>
+                            <IconPlay className="w-4 h-4" />
+                            <span>Iniciar temporizador</span>
+                          </>
+                        )}
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => handleSelectAnchorStep(0)}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-xl bg-white hover:bg-[#E7EEE9] text-[#14281D] font-medium text-sm border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                      >
+                        <IconRotateCcw className="w-4 h-4" />
+                        <span>Reiniciar</span>
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        disabled={anchorStepIdx === 0}
+                        onClick={() => handleSelectAnchorStep(anchorStepIdx - 1)}
+                        className="inline-flex items-center justify-center gap-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-white border border-[#C9D6CD] text-sm font-medium text-[#14281D] disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed"
+                      >
+                        <IconChevronLeft className="w-4 h-4" />
+                        <span>Anterior</span>
+                      </button>
+                      {anchorStepIdx < ANCHOR_STEPS.length - 1 ? (
+                        <button
+                          type="button"
+                          onClick={() => handleSelectAnchorStep(anchorStepIdx + 1)}
+                          className="inline-flex items-center justify-center gap-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-white border border-[#C9D6CD] text-sm font-medium text-[#14281D] hover:bg-[#E7EEE9] cursor-pointer"
+                        >
+                          <span>Siguiente</span>
+                          <IconChevronRight className="w-4 h-4" />
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setAnchorRunning(false);
+                            setAnchorDoneFlash(true);
+                            if (soundEnabled) {
+                              playBellChime('complete');
+                            }
+                            onCompleteAnchor();
+                          }}
+                          className="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-4 py-2 rounded-xl bg-[#1B4332] hover:bg-[#143325] text-white text-sm font-semibold cursor-pointer whitespace-nowrap"
+                        >
+                          <IconCheck className="w-4 h-4" />
+                          <span>Registrar práctica</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            {activeProtocol === 'corte' && (
+              <section className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-10 space-y-8">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#E6DFD2]">
+                  <div className="space-y-1.5 max-w-2xl">
+                    <p className="text-xs font-semibold text-[#9B2226]">
+                      Técnica 03 · Interrupción de patrón PNL (1 min 30 s)
+                    </p>
+                    <h2 className="text-2xl font-bold text-[#14281D]">
+                      Corte Kinestésico de Frecuencia
+                    </h2>
+                    <p className="text-[15px] text-[#2D4539]">
+                      Úsalo cuando un pensamiento repetitivo, una comparación o la culpa navideña te
+                      atrapen en bucle. Cambia la fisiología en 90 segundos para cambiar la
+                      frecuencia mental.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 shrink-0 self-start lg:self-auto">
+                    <button
+                      type="button"
+                      onClick={handleToggleSound}
+                      className={`inline-flex items-center gap-2 min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-semibold border transition-colors cursor-pointer whitespace-nowrap ${
+                        soundEnabled
+                          ? 'bg-[#FBF5E6] border-[#D4A348] text-[#14281D]'
+                          : 'bg-[#F3F6F3] border-[#C9D6CD] text-[#14281D]'
+                      }`}
+                    >
+                      {soundEnabled ? (
+                        <IconVolume2 className="w-4 h-4 text-[#9B2226]" />
+                      ) : (
+                        <IconVolumeX className="w-4 h-4 text-[#4F685B]" />
+                      )}
+                      <span>{soundEnabled ? 'Campana activa' : 'Sin sonido'}</span>
+                    </button>
+
+                    <div className="flex items-center gap-3 bg-[#F3F6F3] px-5 py-3 rounded-xl border border-[#C9D6CD]">
+                      <div>
+                        <p className="text-xs text-[#4F685B]">Paso actual</p>
+                        <p className="text-2xl font-bold text-[#9B2226] tabular-nums">
+                          {cutSecondsLeft}s
+                        </p>
+                      </div>
+                      <div className="h-8 w-px bg-[#C9D6CD]" aria-hidden="true" />
+                      <div>
+                        <p className="text-xs text-[#4F685B]">Secuencia</p>
+                        <p className="text-base font-bold text-[#14281D] tabular-nums">
+                          {cutStepIdx + 1} / {FREQUENCY_CUT_STEPS.length}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                  {FREQUENCY_CUT_STEPS.map((step, idx) => {
+                    const isCurrent = idx === cutStepIdx;
+                    const isPast = idx < cutStepIdx;
+                    return (
+                      <button
+                        key={step.title}
+                        type="button"
+                        onClick={() => handleSelectCutStep(idx)}
+                        className={`text-left p-3.5 rounded-xl border transition-colors cursor-pointer min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226] ${
+                          isCurrent
+                            ? 'bg-[#FBF1EE] border-[#9B2226]'
+                            : isPast
+                              ? 'bg-[#F3F6F3] border-[#C9D6CD]'
+                              : 'bg-white border-[#DFD7C8] hover:border-[#C5B8A1]'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between text-xs font-semibold tabular-nums">
+                          <span className={isCurrent ? 'text-[#9B2226]' : 'text-[#4F685B]'}>
+                            Paso 0{idx + 1}
+                          </span>
+                          <span className="text-[#4F685B]">{step.durationSec}s</span>
+                        </div>
+                        <p className="text-xs sm:text-sm font-bold text-[#14281D] mt-1 line-clamp-2">
+                          {step.title}
+                        </p>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="bg-[#F3F6F3] rounded-2xl border border-[#C9D6CD] p-6 sm:p-8 space-y-5">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-xs font-semibold text-[#9B2226]">
+                      Acción física: {currentCutStep.bodyCue}
+                    </span>
+                    <span className="text-xs text-[#4F685B] tabular-nums">
+                      Duración sugerida: {currentCutStep.durationSec} segundos
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#14281D]">
+                    {currentCutStep.title}
+                  </h3>
+
+                  <p className="text-base text-[#2D4539] leading-relaxed max-w-3xl">
+                    {currentCutStep.pnlInstruction}
+                  </p>
+
+                  <div className="w-full h-2 bg-[#D6DFD8] rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-[#9B2226] transition-all duration-500"
+                      style={{
+                        width: `${Math.round(
+                          ((currentCutStep.durationSec - cutSecondsLeft) /
+                            currentCutStep.durationSec) *
+                            100
+                        )}%`,
+                      }}
+                    />
+                  </div>
+
+                  {cutDoneFlash && (
+                    <div
+                      role="status"
+                      className="p-4 rounded-xl bg-[#FBF5E6] border border-[#D4A348] text-sm text-[#14281D] flex items-center gap-2.5"
+                    >
+                      <IconCheck className="w-5 h-5 text-[#9B2226] shrink-0" />
+                      <span>
+                        Corte Kinestésico completado y guardado en tu registro de sesión.
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCutDoneFlash(false);
+                          if (cutSecondsLeft === 0) {
+                            setCutStepIdx(0);
+                            setCutSecondsLeft(FREQUENCY_CUT_STEPS[0].durationSec);
+                          }
+                          if (!cutRunning && soundEnabled) {
+                            playBellChime('phase');
+                          }
+                          setCutRunning((prev) => !prev);
+                        }}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 py-3 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] text-white font-semibold text-sm transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                      >
+                        {cutRunning ? (
+                          <>
+                            <IconPause className="w-4 h-4" />
+                            <span>Pausar guía</span>
+                          </>
+                        ) : (
+                          <>
+                            <IconPlay className="w-4 h-4" />
+                            <span>Iniciar temporizador</span>
+                          </>
+                        )}
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => handleSelectCutStep(0)}
+                        className="inline-flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-xl bg-white hover:bg-[#E7EEE9] text-[#14281D] font-medium text-sm border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                      >
+                        <IconRotateCcw className="w-4 h-4" />
+                        <span>Reiniciar</span>
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        type="button"
+                        disabled={cutStepIdx === 0}
+                        onClick={() => handleSelectCutStep(cutStepIdx - 1)}
+                        className="inline-flex items-center justify-center gap-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-white border border-[#C9D6CD] text-sm font-medium text-[#14281D] disabled:opacity-40 cursor-pointer disabled:cursor-not-allowed"
+                      >
+                        <IconChevronLeft className="w-4 h-4" />
+                        <span>Anterior</span>
+                      </button>
+                      {cutStepIdx < FREQUENCY_CUT_STEPS.length - 1 ? (
+                        <button
+                          type="button"
+                          onClick={() => handleSelectCutStep(cutStepIdx + 1)}
+                          className="inline-flex items-center justify-center gap-1 min-h-[44px] px-3.5 py-2 rounded-xl bg-white border border-[#C9D6CD] text-sm font-medium text-[#14281D] hover:bg-[#E7EEE9] cursor-pointer"
+                        >
+                          <span>Siguiente</span>
+                          <IconChevronRight className="w-4 h-4" />
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setCutRunning(false);
+                            setCutDoneFlash(true);
+                            if (soundEnabled) {
+                              playBellChime('complete');
+                            }
+                            onCompleteFrequencyCut();
+                          }}
+                          className="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-4 py-2 rounded-xl bg-[#1B4332] hover:bg-[#143325] text-white text-sm font-semibold cursor-pointer whitespace-nowrap"
+                        >
+                          <IconCheck className="w-4 h-4" />
+                          <span>Registrar práctica</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </section>
+            )}
+
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={() => onNavigate('resumen')}
+                className="inline-flex items-center gap-2 min-h-[48px] px-6 py-3 rounded-xl bg-[#D4A348] hover:bg-[#C19139] text-[#11281E] font-semibold text-sm shadow-sm transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              >
+                <span>Continuar al Resumen y Descarga</span>
+                <IconArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      /* =====================================================================
+       * PANTALLA 4: RESUMEN Y DESCARGA
+       * ===================================================================== */
+      function SummaryScreen({
+        session,
+        onChangeClosingIntention,
+        onNavigate,
+        onResetSession,
+      }) {
+        const [copied, setCopied] = useState(false);
+        const [confirmingReset, setConfirmingReset] = useState(false);
+
+        const totalWords =
+          countWords(session.inventory.resilience) +
+          countWords(session.inventory.releasedExpectations) +
+          countWords(session.inventory.secretVictory);
+
+        const completedPillars = [
+          session.inventory.resilience,
+          session.inventory.releasedExpectations,
+          session.inventory.secretVictory,
+        ].filter((t) => countWords(t) > 0).length;
+
+        const totalSomaticPractices =
+          session.somatic.boxBreathingCycles +
+          session.somatic.anchorCompletedCount +
+          session.somatic.frequencyCutCompletedCount;
+
+        const handleCopyReport = async () => {
+          const reportText = buildPlainTextReport(session);
+          try {
+            await navigator.clipboard.writeText(reportText);
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 3000);
+          } catch {
+            const helper = document.createElement('textarea');
+            helper.value = reportText;
+            helper.style.position = 'fixed';
+            helper.style.opacity = '0';
+            document.body.appendChild(helper);
+            helper.select();
+            document.execCommand('copy');
+            document.body.removeChild(helper);
+            setCopied(true);
+            window.setTimeout(() => setCopied(false), 3000);
+          }
+        };
+
+        const handleDownloadTxt = () => {
+          const reportText = buildPlainTextReport(session);
+          const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'el-duelo-invisible-reporte-sesion.txt';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        };
+
+        const handlePrint = () => {
+          window.print();
+        };
+
+        return (
+          <div className="space-y-8">
+            <header className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 print-card space-y-6">
+              <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+                <div className="space-y-2 max-w-2xl">
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-[#4F685B]">
+                    <span className="text-[#9B2226] font-semibold">Módulo 03</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Reporte de Cierre</span>
+                    <span aria-hidden="true">·</span>
+                    <span>Sesión iniciada el {formatSpanishDate(session.startedAt)}</span>
+                  </div>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-[#14281D] tracking-tight">
+                    Resumen de tu Auditoría Emocional
+                  </h1>
+                  <p className="text-[15px] text-[#2D4539] leading-relaxed">
+                    Aquí tienes todo lo que nombraste, soltaste y practicaste en el cuerpo. Puedes
+                    copiarlo a tus notas personales, descargarlo en texto limpio o imprimirlo.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3 no-print shrink-0">
+                  <button
+                    type="button"
+                    onClick={handleCopyReport}
+                    className="inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] text-white font-semibold text-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#9B2226]"
+                  >
+                    {copied ? (
+                      <>
+                        <IconCheck className="w-4 h-4" />
+                        <span>Reporte copiado</span>
+                      </>
+                    ) : (
+                      <>
+                        <IconCopy className="w-4 h-4" />
+                        <span>Copiar Reporte</span>
+                      </>
+                    )}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleDownloadTxt}
+                    className="inline-flex items-center justify-center gap-2 min-h-[48px] px-5 py-3 rounded-xl bg-[#1B4332] hover:bg-[#143325] text-white font-semibold text-sm transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1B4332]"
+                  >
+                    <IconDownload className="w-4 h-4" />
+                    <span>Descargar (.txt)</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handlePrint}
+                    className="inline-flex items-center justify-center gap-2 min-h-[48px] px-4 py-3 rounded-xl bg-[#F3F6F3] hover:bg-[#E7EEE9] text-[#14281D] font-semibold text-sm border border-[#C9D6CD] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                  >
+                    <IconPrinter className="w-4 h-4 text-[#9B2226]" />
+                    <span>Imprimir / PDF</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6 border-t border-[#E6DFD2]">
+                <div>
+                  <p className="text-xs text-[#4F685B]">Pilares escritos</p>
+                  <p className="text-2xl font-bold text-[#14281D] tabular-nums mt-0.5">
+                    {completedPillars} / 3
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-[#4F685B]">Palabras totales</p>
+                  <p className="text-2xl font-bold text-[#14281D] tabular-nums mt-0.5">
+                    {totalWords}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-[#4F685B]">Ciclos de respiración</p>
+                  <p className="text-2xl font-bold text-[#9B2226] tabular-nums mt-0.5">
+                    {session.somatic.boxBreathingCycles}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-[#4F685B]">Prácticas somáticas</p>
+                  <p className="text-2xl font-bold text-[#1B4332] tabular-nums mt-0.5">
+                    {totalSomaticPractices}
+                  </p>
+                </div>
+              </div>
+            </header>
+
+            <section className="bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 print-card space-y-6">
+              <div className="flex items-center justify-between gap-4 pb-4 border-b border-[#E6DFD2]">
+                <div>
+                  <p className="text-xs font-semibold text-[#9B2226]">Parte 01</p>
+                  <h2 className="text-xl font-bold text-[#14281D]">Inventario del Alma</h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => onNavigate('inventario')}
+                  className="no-print inline-flex items-center gap-1.5 min-h-[40px] px-3.5 py-2 rounded-lg text-xs font-semibold text-[#9B2226] hover:bg-[#FBF1EE] transition-colors cursor-pointer whitespace-nowrap shrink-0"
+                >
+                  <IconEdit className="w-3.5 h-3.5" />
+                  <span>Editar respuestas</span>
+                </button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <h3 className="text-sm font-bold text-[#14281D]">
+                    A) Resiliencia invisible y supervivencia cotidiana
+                  </h3>
+                  <p className="text-[15px] text-[#2D4539] leading-relaxed whitespace-pre-line">
+                    {session.inventory.resilience.trim() ||
+                      'Aún no has escrito en este pilar. Puedes volver al Inventario del Alma para completarlo.'}
+                  </p>
+                </div>
+
+                <div className="pt-5 border-t border-[#E6DFD2] space-y-2">
+                  <h3 className="text-sm font-bold text-[#14281D]">
+                    B) Expectativas ajenas de las que me despojo
+                  </h3>
+                  <p className="text-[15px] text-[#2D4539] leading-relaxed whitespace-pre-line">
+                    {session.inventory.releasedExpectations.trim() ||
+                      'Aún no has escrito en este pilar. Puedes volver al Inventario del Alma para completarlo.'}
+                  </p>
+                </div>
+
+                <div className="pt-5 border-t border-[#E6DFD2] space-y-2">
+                  <h3 className="text-sm font-bold text-[#14281D]">
+                    C) Tu victoria secreta del año
+                  </h3>
+                  <p className="text-[15px] text-[#2D4539] leading-relaxed whitespace-pre-line">
+                    {session.inventory.secretVictory.trim() ||
+                      'Aún no has escrito en este pilar. Puedes volver al Inventario del Alma para completarlo.'}
+                  </p>
+                </div>
+              </div>
+
+              {session.analysis && (
+                <div className="pt-6 border-t border-[#D9CEBC] space-y-3">
+                  <p className="text-xs font-semibold text-[#9B2226]">Síntesis PNL generada</p>
+                  <p className="text-base font-bold text-[#14281D]">{session.analysis.headline}</p>
+                  <p className="text-sm text-[#2D4539] leading-relaxed">
+                    {session.analysis.reframeMessage}
+                  </p>
+                  <p className="text-sm font-semibold text-[#14281D] pt-1">
+                    Afirmación ancla: “{session.analysis.affirmation}”
+                  </p>
+                </div>
+              )}
+            </section>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+              <section className="lg:col-span-5 bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 print-card space-y-5">
+                <div className="flex items-center justify-between gap-2 pb-4 border-b border-[#E6DFD2]">
+                  <div>
+                    <p className="text-xs font-semibold text-[#9B2226]">Parte 02</p>
+                    <h2 className="text-xl font-bold text-[#14281D]">Registro Somático</h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onNavigate('botiquin')}
+                    className="no-print inline-flex items-center gap-1.5 min-h-[40px] px-3 py-1.5 rounded-lg text-xs font-semibold text-[#9B2226] hover:bg-[#FBF1EE] transition-colors cursor-pointer whitespace-nowrap"
+                  >
+                    <span>Practicar</span>
+                  </button>
+                </div>
+
+                <ul className="space-y-4 text-sm">
+                  <li className="flex items-center justify-between gap-4">
+                    <span className="text-[#2D4539]">Respiración Cuadrada (4-4-4-4)</span>
+                    <span className="font-bold text-[#14281D] tabular-nums">
+                      {session.somatic.boxBreathingCycles}{' '}
+                      {session.somatic.boxBreathingCycles === 1 ? 'ciclo' : 'ciclos'}
+                    </span>
+                  </li>
+                  <li className="flex items-center justify-between gap-4 pt-3 border-t border-[#EAE3D7]">
+                    <span className="text-[#2D4539]">Ancla Somática de Autocontención</span>
+                    <span className="font-bold text-[#14281D] tabular-nums">
+                      {session.somatic.anchorCompletedCount}{' '}
+                      {session.somatic.anchorCompletedCount === 1 ? 'sesión' : 'sesiones'}
+                    </span>
+                  </li>
+                  <li className="flex items-center justify-between gap-4 pt-3 border-t border-[#EAE3D7]">
+                    <span className="text-[#2D4539]">Corte Kinestésico de Frecuencia</span>
+                    <span className="font-bold text-[#14281D] tabular-nums">
+                      {session.somatic.frequencyCutCompletedCount}{' '}
+                      {session.somatic.frequencyCutCompletedCount === 1 ? 'sesión' : 'sesiones'}
+                    </span>
+                  </li>
+                </ul>
+
+                {session.somatic.lastPracticedProtocol && (
+                  <p className="text-xs text-[#4F685B] pt-3 border-t border-[#E6DFD2]">
+                    Última herramienta utilizada:{' '}
+                    <span className="font-semibold text-[#14281D]">
+                      {protocolLabel(session.somatic.lastPracticedProtocol)}
+                    </span>
+                  </p>
+                )}
+              </section>
+
+              <section className="lg:col-span-7 bg-[#FDFBF7] rounded-2xl border border-[#D4A348]/45 shadow-lg shadow-black/15 p-6 sm:p-8 print-card space-y-4">
+                <div>
+                  <p className="text-xs font-semibold text-[#9B2226]">Parte 03</p>
+                  <h2 className="text-xl font-bold text-[#14281D]">
+                    Intención de cierre para este fin de año
+                  </h2>
+                  <p className="text-sm text-[#455E51] mt-1">
+                    Opcional: escribe una frase breve de trato amable que quieras incluir en tu
+                    reporte final.
+                  </p>
+                </div>
+
+                <textarea
+                  rows={4}
+                  value={session.closingIntention}
+                  onChange={(event) => onChangeClosingIntention(event.target.value)}
+                  placeholder="Ejemplo: Me prometo no pelear con el calendario estas semanas; priorizaré el descanso y celebraré mi camino real."
+                  className="w-full rounded-xl border border-[#C9D6CD] bg-white px-4 py-3 text-[15px] leading-relaxed text-[#14281D] placeholder:text-[#789083] focus:outline-none focus:ring-2 focus:ring-[#9B2226]/25 focus:border-[#9B2226] transition-colors"
+                />
+
+                <div className="pt-2 flex flex-wrap items-center justify-between gap-3 no-print">
+                  <span className="text-xs text-[#4F685B]">
+                    Incluido automáticamente al copiar o descargar el reporte.
+                  </span>
+
+                  {!confirmingReset ? (
+                    <button
+                      type="button"
+                      onClick={() => setConfirmingReset(true)}
+                      className="inline-flex items-center gap-1.5 min-h-[40px] px-3.5 py-2 rounded-lg text-xs font-semibold text-[#4F685B] hover:text-[#9B2226] hover:bg-[#FBF1EE] transition-colors cursor-pointer"
+                    >
+                      <IconRotateCcw className="w-3.5 h-3.5" />
+                      <span>Reiniciar sesión</span>
+                    </button>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-medium text-[#9B2226]">
+                        ¿Borrar datos locales?
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          onResetSession();
+                          setConfirmingReset(false);
+                        }}
+                        className="min-h-[36px] px-3 py-1.5 rounded-lg bg-[#9B2226] text-white text-xs font-semibold cursor-pointer"
+                      >
+                        Confirmar
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setConfirmingReset(false)}
+                        className="min-h-[36px] px-3 py-1.5 rounded-lg bg-[#F3F6F3] text-[#14281D] text-xs font-semibold border border-[#C9D6CD] cursor-pointer"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </section>
+            </div>
+          </div>
+        );
+      }
+
+      /* =====================================================================
+       * APLICACIÓN PRINCIPAL Y PERSISTENCIA LOCAL
+       * ===================================================================== */
+      const STORAGE_KEY = 'el_duelo_invisible_kit_v1';
+
+      function createInitialSession() {
+        return {
+          inventory: {
+            resilience: '',
+            releasedExpectations: '',
+            secretVictory: '',
+          },
+          analysis: null,
+          somatic: {
+            boxBreathingCycles: 0,
+            anchorCompletedCount: 0,
+            frequencyCutCompletedCount: 0,
+            lastPracticedProtocol: null,
+          },
+          closingIntention: '',
+          startedAt: new Date().toISOString(),
+        };
+      }
+
+      function loadSavedSession() {
+        try {
+          const raw = window.localStorage.getItem(STORAGE_KEY);
+          if (!raw) {
+            return createInitialSession();
+          }
+          const parsed = JSON.parse(raw);
+          const base = createInitialSession();
+          return {
+            inventory: {
+              resilience: parsed.inventory?.resilience ?? '',
+              releasedExpectations: parsed.inventory?.releasedExpectations ?? '',
+              secretVictory: parsed.inventory?.secretVictory ?? '',
+            },
+            analysis: parsed.analysis ?? null,
+            somatic: {
+              boxBreathingCycles: parsed.somatic?.boxBreathingCycles ?? 0,
+              anchorCompletedCount: parsed.somatic?.anchorCompletedCount ?? 0,
+              frequencyCutCompletedCount: parsed.somatic?.frequencyCutCompletedCount ?? 0,
+              lastPracticedProtocol: parsed.somatic?.lastPracticedProtocol ?? null,
+            },
+            closingIntention: parsed.closingIntention ?? '',
+            startedAt: parsed.startedAt ?? base.startedAt,
+          };
+        } catch {
+          return createInitialSession();
+        }
+      }
+
+      const NAV_ITEMS = [
+        { id: 'bienvenida', label: 'Bienvenida' },
+        { id: 'inventario', label: 'Inventario del Alma' },
+        { id: 'botiquin', label: 'Botiquín Somático' },
+        { id: 'resumen', label: 'Resumen y Descarga' },
+      ];
+
+      function App() {
+        const [activeScreen, setActiveScreen] = useState('bienvenida');
+        const [activeSomaticProtocol, setActiveSomaticProtocol] = useState('respiracion');
+        const [session, setSession] = useState(() => loadSavedSession());
+
+        useEffect(() => {
+          try {
+            window.localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+          } catch {
+            // Ignorar errores de cuota de almacenamiento
+          }
+        }, [session]);
+
+        const navigateTo = useCallback((screen) => {
+          setActiveScreen(screen);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, []);
+
+        const handleInventoryChange = useCallback((updated) => {
+          setSession((prev) => ({
+            ...prev,
+            inventory: updated,
+          }));
+        }, []);
+
+        const handleAnalyzeInventory = useCallback(() => {
+          setSession((prev) => ({
+            ...prev,
+            analysis: analyzeSoulInventory(prev.inventory),
+          }));
+        }, []);
+
+        const handleGoToSomatic = useCallback(
+          (protocol) => {
+            setActiveSomaticProtocol(protocol);
+            navigateTo('botiquin');
+          },
+          [navigateTo]
+        );
+
+        const handleCompleteBoxCycle = useCallback(() => {
+          setSession((prev) => ({
+            ...prev,
+            somatic: {
+              ...prev.somatic,
+              boxBreathingCycles: prev.somatic.boxBreathingCycles + 1,
+              lastPracticedProtocol: 'respiracion',
+            },
+          }));
+        }, []);
+
+        const handleCompleteAnchor = useCallback(() => {
+          setSession((prev) => ({
+            ...prev,
+            somatic: {
+              ...prev.somatic,
+              anchorCompletedCount: prev.somatic.anchorCompletedCount + 1,
+              lastPracticedProtocol: 'ancla',
+            },
+          }));
+        }, []);
+
+        const handleCompleteFrequencyCut = useCallback(() => {
+          setSession((prev) => ({
+            ...prev,
+            somatic: {
+              ...prev.somatic,
+              frequencyCutCompletedCount: prev.somatic.frequencyCutCompletedCount + 1,
+              lastPracticedProtocol: 'corte',
+            },
+          }));
+        }, []);
+
+        const handleClosingIntentionChange = useCallback((value) => {
+          setSession((prev) => ({
+            ...prev,
+            closingIntention: value,
+          }));
+        }, []);
+
+        const handleResetSession = useCallback(() => {
+          const fresh = createInitialSession();
+          setSession(fresh);
+          try {
+            window.localStorage.removeItem(STORAGE_KEY);
+          } catch {
+            // Ignorar errores de almacenamiento
+          }
+          navigateTo('bienvenida');
+        }, [navigateTo]);
+
+        const hasExistingProgress =
+          countWords(session.inventory.resilience) > 0 ||
+          countWords(session.inventory.releasedExpectations) > 0 ||
+          countWords(session.inventory.secretVictory) > 0 ||
+          session.somatic.boxBreathingCycles > 0 ||
+          session.somatic.anchorCompletedCount > 0 ||
+          session.somatic.frequencyCutCompletedCount > 0;
+
+        return (
+          <div className="min-h-screen flex flex-col bg-[#153226] bg-[radial-gradient(ellipse_at_top,_rgba(212,163,72,0.11),_transparent_58%)] text-[#FAF7F0]">
+            <header className="sticky top-0 z-30 bg-[#11281E]/95 backdrop-blur-md border-b border-[#2B5240]">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-12 md:h-16 flex items-center justify-between gap-8">
+                <button
+                  type="button"
+                  onClick={() => navigateTo('bienvenida')}
+                  className="font-display text-base sm:text-lg font-bold tracking-tight text-[#FAF7F0] hover:text-[#F2C97D] transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A348] rounded-md"
+                >
+                  El Duelo Invisible
+                </button>
+
+                <nav aria-label="Secciones del kit" className="hidden md:flex items-center gap-6">
+                  {NAV_ITEMS.map((item) => {
+                    const isActive = activeScreen === item.id;
+                    return (
+                      <button
+                        key={item.id}
+                        type="button"
+                        onClick={() => navigateTo(item.id)}
+                        aria-current={isActive ? 'page' : undefined}
+                        className={`py-2 text-sm font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer border-b-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A348] ${
+                          isActive
+                            ? 'text-[#F2C97D] border-[#D4A348] font-semibold'
+                            : 'text-[#C7D6CE] border-transparent hover:text-[#FAF7F0] hover:border-[#3D6A54]'
+                        }`}
+                      >
+                        {item.label}
+                      </button>
+                    );
+                  })}
+                </nav>
+
+                <div className="flex items-center shrink-0">
+                  {activeScreen === 'bienvenida' ? (
+                    <button
+                      type="button"
+                      onClick={() => navigateTo('inventario')}
+                      className="min-h-[38px] md:min-h-[40px] px-4 py-1.5 rounded-xl bg-[#9B2226] hover:bg-[#7D191D] text-white text-xs sm:text-sm font-semibold border border-[#B83B3F]/40 transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4A348]"
+                    >
+                      Comenzar Auditoría
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => navigateTo('resumen')}
+                      className="min-h-[38px] md:min-h-[40px] px-4 py-1.5 rounded-xl bg-[#D4A348] hover:bg-[#C19139] text-[#11281E] text-xs sm:text-sm font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2C97D]"
+                    >
+                      Exportar Resumen
+                    </button>
+                  )}
+                </div>
+              </div>
+            </header>
+
+            <main className="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 pb-24 md:pb-14">
+              {activeScreen === 'bienvenida' && (
+                <WelcomeScreen
+                  onStartAudit={() => navigateTo('inventario')}
+                  onNavigate={navigateTo}
+                  hasExistingProgress={hasExistingProgress}
+                />
+              )}
+
+              {activeScreen === 'inventario' && (
+                <InventoryScreen
+                  inventory={session.inventory}
+                  analysis={session.analysis}
+                  onChangeInventory={handleInventoryChange}
+                  onAnalyze={handleAnalyzeInventory}
+                  onGoToSomatic={handleGoToSomatic}
+                  onNavigate={navigateTo}
+                />
+              )}
+
+              {activeScreen === 'botiquin' && (
+                <SomaticKitScreen
+                  activeProtocol={activeSomaticProtocol}
+                  onSelectProtocol={setActiveSomaticProtocol}
+                  stats={session.somatic}
+                  onCompleteBoxCycle={handleCompleteBoxCycle}
+                  onCompleteAnchor={handleCompleteAnchor}
+                  onCompleteFrequencyCut={handleCompleteFrequencyCut}
+                  onNavigate={navigateTo}
+                />
+              )}
+
+              {activeScreen === 'resumen' && (
+                <SummaryScreen
+                  session={session}
+                  onChangeClosingIntention={handleClosingIntentionChange}
+                  onNavigate={navigateTo}
+                  onResetSession={handleResetSession}
+                />
+              )}
+            </main>
+
+            <footer className="border-t border-[#2B5240] bg-[#11281E] mb-14 md:mb-0 no-print">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#C7D6CE]">
+                <p>
+                  El Duelo Invisible · Kit Digital Interactivo basado en la obra de Carlos Luna PNL
+                </p>
+                <p>Tus escritos permanecen privados en este dispositivo.</p>
+              </div>
+            </footer>
+
+            <nav
+              aria-label="Navegación móvil"
+              className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#11281E]/95 backdrop-blur-md border-t border-[#2B5240] no-print"
+            >
+              <div className="grid grid-cols-4 h-14 items-center">
+                <button
+                  type="button"
+                  onClick={() => navigateTo('bienvenida')}
+                  className={`flex flex-col items-center justify-center min-h-[44px] text-[11px] font-medium transition-colors cursor-pointer ${
+                    activeScreen === 'bienvenida'
+                      ? 'text-[#F2C97D] font-semibold'
+                      : 'text-[#C7D6CE]'
+                  }`}
+                >
+                  <IconBookOpen className="w-5 h-5" />
+                  <span className="mt-0.5 whitespace-nowrap">Inicio</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigateTo('inventario')}
+                  className={`flex flex-col items-center justify-center min-h-[44px] text-[11px] font-medium transition-colors cursor-pointer ${
+                    activeScreen === 'inventario'
+                      ? 'text-[#F2C97D] font-semibold'
+                      : 'text-[#C7D6CE]'
+                  }`}
+                >
+                  <IconPenLine className="w-5 h-5" />
+                  <span className="mt-0.5 whitespace-nowrap">Inventario</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigateTo('botiquin')}
+                  className={`flex flex-col items-center justify-center min-h-[44px] text-[11px] font-medium transition-colors cursor-pointer ${
+                    activeScreen === 'botiquin'
+                      ? 'text-[#F2C97D] font-semibold'
+                      : 'text-[#C7D6CE]'
+                  }`}
+                >
+                  <IconWind className="w-5 h-5" />
+                  <span className="mt-0.5 whitespace-nowrap">Botiquín</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigateTo('resumen')}
+                  className={`flex flex-col items-center justify-center min-h-[44px] text-[11px] font-medium transition-colors cursor-pointer ${
+                    activeScreen === 'resumen'
+                      ? 'text-[#F2C97D] font-semibold'
+                      : 'text-[#C7D6CE]'
+                  }`}
+                >
+                  <IconFileText className="w-5 h-5" />
+                  <span className="mt-0.5 whitespace-nowrap">Resumen</span>
+                </button>
+              </div>
+            </nav>
+          </div>
+        );
+      }
+
+      const rootElement = document.getElementById('root');
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(<App />);
+    </script>
+  </body>
+</html>
